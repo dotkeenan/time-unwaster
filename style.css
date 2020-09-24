@@ -1,0 +1,69 @@
+
+body  {
+  /* for testing purposes */
+  border: 2px solid black;
+  max-width: 375px;
+  margin: 0 auto;
+  font-family: 'DM Sans', sans-serif;
+  height: 667px;
+}
+.content  {
+  height: 100%;
+  /* min-height: 667px; */
+  background: url(assets/images/pUAM5hPaCRI.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content-row {
+  height: 100%;
+}
+
+.header-class  {
+  margin-top: 55px;
+}
+
+.h1-content  {
+  margin-top: 15px;
+}
+
+.h2-content  {
+  font-size: 1.25rem;
+  margin-top: 15px;
+}
+
+.main-button-div  {
+  margin-bottom: 70px;
+}
+
+.unwaste-btn  {
+
+}
+
+
+
+
+/* Experimental CSS for commented out html that utilized flex-direction: column; instead */
+/* .flex-column  {
+  height: 100%;
+}
+
+.my-flex-container  {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.my-flex-item {
+  width: 100%;
+}
+
+.my-big-container  {
+  width: 100%;
+}
+
+main  {
+  justify-items: flex-end;
+} */
