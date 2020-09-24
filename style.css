@@ -1,0 +1,127 @@
+
+* {
+  box-sizing: border-box;
+  margin:0 auto;
+}
+
+body  {
+  /* for testing purposes */
+  border: 2px solid black;
+  max-width: 375px;
+  margin: 0 auto;
+  font-family: 'DM Sans', sans-serif;
+  height: 667px;
+}
+.content  {
+  height: 100%;
+  /* min-height: 667px; */
+  background: url(assets/images/pUAM5hPaCRI.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.content-row {
+  height: 100%;
+}
+
+.header-class  {
+  /* Not sure why my header goes down so far when there is no content there */
+  /* height: 33%; */
+  margin-top: 55px;
+}
+
+.h1-content  {
+  font-size: 3rem;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.h2-content  {
+  font-size: 1.25rem;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.main-button-div  {
+  margin-bottom: 40px;
+}
+
+.unwaste-btn  {
+  height: 58px;
+  width: 135px;
+  font-size: 1.6rem;
+  color: white;
+  background: rgba(166, 233, 202, 0.8);
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 100px;
+}
+/* ----------------------------------------End of home page CSS */
+.activity-page-div  {
+  padding: 3% 7%;
+}
+
+.activity-info  {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+  margin-bottom: 3%;
+}
+
+.h1-activity-content  {
+  font-size: 2rem;
+  padding: 0;
+  margin-top: 10px;
+  /* border-bottom: 2px solid black; */
+}
+
+/* super secret weird partial border */
+.h1-activity-content:after  {
+    content: ""; /* This is necessary for the pseudo element to work. */
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 90%; /* Change this to whatever width you want. */
+    padding-top: 5px; /* This creates some space between the element and the border. */
+    border-bottom: 1px dashed black; /* This creates the border. Replace black with whatever color you want. */
+}
+
+.gif  {
+  width: 100%;
+  max-height: 250px;
+}
+
+.image {
+  border: 3px solid white;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
+  border-radius: 18px;
+}
+
+
+/* Experimental CSS for commented out html that utilized flex-direction: column; instead */
+/* .flex-column  {
+  height: 100%;
+}
+
+.my-flex-container  {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.my-flex-item {
+  width: 100%;
+}
+
+.my-big-container  {
+  width: 100%;
+}
+
+main  {
+  justify-items: flex-end;
+} */
