@@ -68,8 +68,9 @@ function getActivity(event) {
 //pretty sure no way to combine getGifUrl() and getData() since it uses the
 //response data as a parameter
 function getGifUrl(data)  {
-  var gifUrl = data[0].embed_url;
+  var gifUrl = '"' + data['data'][0].embed_url + '"';
   console.log(gifUrl);
+  renderDOM(gifUrl);
 }
 
 function getData(data) {
@@ -108,7 +109,7 @@ function renderDOM(activity, type, accessibility, price, participants, gifUrl) {
   activityParticipants.textContent = 'participants: ' + participants;
 
   var giphyUrl = document.getElementById('giphyUrl');
-  // giphyUrl.setAttribute('src', gifUrl);
+  giphyUrl.setAttribute('src', gifUrl);
 }
 
 
