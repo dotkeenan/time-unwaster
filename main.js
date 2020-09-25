@@ -18,11 +18,13 @@ var homeIcon = '<img src="/assets/images/home2mini.svg" alt="Work from home icon
 
 // add event listener to the unwasteBtn
 unwasteBtn.addEventListener('click', homepageUnwaste);
+
 // function that makes the ajax calls and toggles d-none on appropriate elements
 function homepageUnwaste() {
   getActivity();
   toggleHide();
 }
+
 // function that hides homepage and unhides activityPage, removes previous
 // event listener and adds a new one that doesn't run toggleHide()
 function toggleHide() {
@@ -31,6 +33,7 @@ function toggleHide() {
   unwasteBtn.removeEventListener('click', homepageUnwaste);
   unwasteBtn.addEventListener('click', getActivity)
 }
+
 //Makes the ajax calls.  Giphy's ajax call relies on boredAPI's call, so it's
 //nested inside of the success parameter of the boredapi call.
 //After getting all the data and setting all the variables needed, it
@@ -58,12 +61,14 @@ function getActivity(event) {
         },
         error: function (giphyData) {
           console.error(giphyData);
+          //add a visual indicator for the error on screen
         }
       });
 
     },
     error: function (data) {
       console.error(data);
+      // add a visual indicator for the error on screen
     }
   });
 }

@@ -56,6 +56,9 @@ body  {
   border: none;
   border-radius: 100px;
 }
+
+.unwaste-btn:hover
+
 /* ----------------------------------------End of home page CSS */
 .activity-page-div  {
   padding: 3% 7%;
@@ -87,7 +90,7 @@ body  {
     border-bottom: 1px dashed black; /* This creates the border. Replace black with whatever color you want. */
 }
 
-.gif  {
+.gif-container  {
   width: 100%;
   max-height: 250px;
 }
@@ -100,29 +103,3 @@ body  {
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
   border-radius: 18px;
 }
-
-
-/* Experimental CSS for commented out html that utilized flex-direction: column; instead */
-/* .flex-column  {
-  height: 100%;
-}
-
-.my-flex-container  {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.my-flex-item {
-  width: 100%;
-}
-
-.my-big-container  {
-  width: 100%;
-}
-
-main  {
-  justify-items: flex-end;
-} */
