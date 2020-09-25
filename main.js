@@ -41,7 +41,7 @@ function getActivity(event) {
     success: function (data) {
       //temporary
       console.log(data);
-
+      getGifUrl(data);
     },
     error: function (data) {
       console.error(data);
@@ -65,6 +65,13 @@ function getActivity(event) {
 //   });
 // }
 
+//pretty sure no way to combine getGifUrl() and getData() since it uses the
+//response data as a parameter
+function getGifUrl(data)  {
+  var gifUrl = data[0].embed_url;
+  console.log(gifUrl);
+}
+
 function getData(data) {
   dataActivity = data['activity'];
   var dataType = data['type'];
@@ -81,7 +88,7 @@ function getData(data) {
   // Eventually need to also pass in the url for the gif.
 }
 
-function renderDOM(activity, type, accessibility, price, participants) {
+function renderDOM(activity, type, accessibility, price, participants, gifUrl) {
 
   //if price is .12 , price = 1 money icon. etc...
 
@@ -99,6 +106,9 @@ function renderDOM(activity, type, accessibility, price, participants) {
 
   var activityParticipants = document.getElementById('activityParticipants');
   activityParticipants.textContent = 'participants: ' + participants;
+
+  var giphyUrl = document.getElementById('giphyUrl');
+  // giphyUrl.setAttribute('src', gifUrl);
 }
 
 
