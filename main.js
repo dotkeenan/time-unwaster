@@ -2,8 +2,20 @@ var unwasteBtn = document.getElementById('unwasteBtn');
 var header = document.getElementById('header');
 var activityPage = document.getElementById('activityPage');
 var dataActivity = null;
+var dataType = null;
+var dataAccessibility = null;
+var dataPrice = null;
+var dataParticipants = null;
+
+// var dataGifUrl = 'https://media4.giphy.com/media/NZ91AhP04aUZG/giphy.gif?cid=6054759byj9lgc62ipbb1esbtfzd743b5xuckmc666umdvl4&rid=giphy.gif';
+var dataGifUrl = null;
 
 unwasteBtn.addEventListener('click', homepageUnwaste);
+
+function homepageUnwaste() {
+  getActivity();
+  toggleHide();
+}
 
 function toggleHide() {
   header.classList.toggle('d-none');
@@ -15,40 +27,71 @@ function toggleHide() {
   });
 }
 
-function homepageUnwaste() {
-  getActivity();
-  toggleHide();
-}
-
-// possible to put the giphy ajax call in the same function.
 function getActivity(event) {
   $.ajax({
     url: 'https://www.boredapi.com/api/activity',
     method: 'GET',
     success: function (data) {
       //temporary
-      console.log(data);
+      console.log('boredapi data response:', data);
       getData(data);
+
+      $.ajax({
+        url: 'http://api.giphy.com/v1/gifs/search?q=' + dataActivity + '&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=4&rating=pg-13',
+        method: 'GET',
+        success: function (giphyData) {
+          //temporary
+          console.log('giphy data response:', giphyData);
+          console.log('value of dataActivity', dataActivity);
+          console.log('the ajax call url:', this.url);
+          getGifUrl(giphyData);
+          renderDOM(dataActivity, dataType, dataAccessibility, dataPrice, dataParticipants, dataGifUrl);
+
+        },
+        error: function (giphyData) {
+          console.error(giphyData);
+        }
+      });
+
     },
     error: function (data) {
       console.error(data);
     }
   });
-
-  $.ajax({
-    url: 'http://api.giphy.com/v1/gifs/search?q=' + dataActivity + '&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=1',
-    method: 'GET',
-    success: function (data) {
-      //temporary
-      console.log(data);
-      getGifUrl(data);
-    },
-    error: function (data) {
-      console.error(data);
-    }
-  });
-
 }
+
+// Previous code that almost worked but dataActivity didnt update fast enough
+// function getActivity(event) {
+//   $.ajax({
+//     url: 'https://www.boredapi.com/api/activity',
+//     method: 'GET',
+//     success: function (data) {
+//       //temporary
+//       console.log('boredapi data response:', data);
+//       getData(data);
+//     },
+//     error: function (data) {
+//       console.error(data);
+//     }
+//   });
+
+//   $.ajax({
+//     url: 'http://api.giphy.com/v1/gifs/search?q=' + dataActivity + '&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=4&rating=pg-13',
+//     method: 'GET',
+//     success: function(giphyData) {
+//       //temporary
+//       console.log('giphy data response:', giphyData);
+//       console.log('value of dataActivity', dataActivity);
+//       console.log('the ajax call url:', this.url);
+//       getGifUrl(giphyData);
+//     },
+//     error: function (giphyData) {
+//       console.error(giphyData);
+//     }
+//   });
+// }
+
+
 // Attemping to put this in the getActivity()
 // function getGif(event) {
 //   $.ajax({
@@ -67,29 +110,29 @@ function getActivity(event) {
 
 //pretty sure no way to combine getGifUrl() and getData() since it uses the
 //response data as a parameter
-function getGifUrl(data)  {
-  var gifUrl = '"' + data['data'][0].embed_url + '"';
-  console.log(gifUrl);
-  renderDOM(gifUrl);
+function getGifUrl(giphyData)  {
+  var randomNumber = Math.floor(Math.random() * 4);
+  dataGifUrl = giphyData['data'][randomNumber]['images']['original']['url'];
+  console.log('url of giphy request:', dataGifUrl);
+  // renderDOM(gifUrl);
 }
 
 function getData(data) {
   dataActivity = data['activity'];
-  var dataType = data['type'];
-  var dataAccessibility = data['accessibility'];
-  var dataPrice = data['price'];
-  var dataParticipants = data['participants'];
+  dataType = data['type'];
+  dataAccessibility = data['accessibility'];
+  dataPrice = data['price'];
+  dataParticipants = data['participants'];
   //for testing. WORKS.
   // console.log(dataActivity);
   // console.log(dataType);
   // console.log(dataAccessibility);
   // console.log(dataPrice);
   // console.log(dataParticipants);
-  renderDOM(dataActivity, dataType, dataAccessibility, dataPrice, dataParticipants);
   // Eventually need to also pass in the url for the gif.
 }
 
-function renderDOM(activity, type, accessibility, price, participants, gifUrl) {
+function renderDOM(activity, type, accessibility, price, participants) {
 
   //if price is .12 , price = 1 money icon. etc...
 
@@ -108,8 +151,9 @@ function renderDOM(activity, type, accessibility, price, participants, gifUrl) {
   var activityParticipants = document.getElementById('activityParticipants');
   activityParticipants.textContent = 'participants: ' + participants;
 
+  // console.log(dataGifUrl);
   var giphyUrl = document.getElementById('giphyUrl');
-  giphyUrl.setAttribute('src', gifUrl);
+  giphyUrl.setAttribute('src', dataGifUrl);
 }
 
 
