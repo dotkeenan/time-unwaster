@@ -1,30 +1,30 @@
-GET /api/activity/ HTTP/1.1
-User-Agent: HTTPie/0.9.8
-Accept-Encoding: gzip, deflate
-Accept: */*
-Connection: keep-alive
-Host: www.boredapi.com
+// GET /api/activity/ HTTP/1.1
+// User-Agent: HTTPie/0.9.8
+// Accept-Encoding: gzip, deflate
+// Accept: */*
+// Connection: keep-alive
+// Host: www.boredapi.com
 
 
 
-HTTP/1.1 200 OK
-Server: Cowboy
-Connection: keep-alive
-X-Powered-By: Express
-Access-Control-Allow-Origin: *
-Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
-Content-Type: application/json; charset=utf-8
-Content-Length: 137
-Etag: W/"89-kJN/92YyRAWYgV1+8pxs9FqyqBo"
-Date: Fri, 25 Sep 2020 00:19:23 GMT
-Via: 1.1 vegur
-*/
+// HTTP/1.1 200 OK
+// Server: Cowboy
+// Connection: keep-alive
+// X-Powered-By: Express
+// Access-Control-Allow-Origin: *
+// Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept
+// Content-Type: application/json; charset=utf-8
+// Content-Length: 137
+// Etag: W/"89-kJN/92YyRAWYgV1+8pxs9FqyqBo"
+// Date: Fri, 25 Sep 2020 00:19:23 GMT
+// Via: 1.1 vegur
+
 
 {
   "activity":"Conquer one of your fears",
   "type":"recreational",
   "participants":1,
-  "price":0.1,"
-  link":"",
+  "price": 0.1,
+  "link":"",
   "key":"8344539",
   "accessibility":0.1}
