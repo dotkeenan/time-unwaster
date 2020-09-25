@@ -17,7 +17,16 @@ function getActivity(event)  {
 }
 
 function getData(data)  {
-
+  var dataActivity = data['activity'];
+  var dataType = data['type'];
+  var dataAccessibility = data['accessibility'];
+  var dataPrice = data['price'];
+  var dataParticipants = data['participants'];
+  console.log(dataActivity);
+  console.log(dataType);
+  console.log(dataAccessibility);
+  console.log(dataPrice);
+  console.log(dataParticipants);
 }
 
 
