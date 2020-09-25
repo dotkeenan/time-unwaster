@@ -133,6 +133,7 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
   giphyUrl.setAttribute('src', dataGifUrl);
 }
 
+//Attempt at creating amt of icons based on decimal returned * 10 to be a whole number.
 var activityAccessibility = document.getElementById('activityAccessibility');
 var accessibilityIcon = '<span class="iconify" data-inline="false" data-icon="mdi: airplane" style="font - size: 24px;">';
 function accessibilityIconMaker(accessibility) {
