@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap-grid.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
-  <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,7 +16,7 @@
     <div class="row justify-content-center content-row">
 
       <!-- home page section header-->
-      <header class="header-class col-sm-12 d-none">
+      <header id="header" class="header-class col-sm-12">
         <div id="logo" class="col-sm-12 text-center">
           <img src="assets/images/Unwaste Logo.png" alt="Time Unwaster Logo">
         </div>
@@ -26,27 +25,28 @@
       </header>
       <!-- end of home page header section -->
 
-      <div class="container activity-page-div">
+      <!-- start of activity page html -->
+      <div id="activityPage" class="container activity-page-div d-none">
         <div class="row justify-content-center">
           <div class="row justify-content-center activity-info">
-            <h1 class="col-sm-12 text-center h1-activity-content">PlaceHolder Activity placeholder</h1>
-            <div class="col-sm-12 details">
-              <p class="category">category: recreation</p>
-              <p class="accessibility">accessibility:
-                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
-                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
-                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
-                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
-                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
-              </p>
-              <p class="price">price:
+            <h1 id="activityName" class="col-sm-12 text-center h1-activity-content">activity placeholder</h1>
+            <div id="activityDetails" class="col-sm-12 details">
+              <p id="activityType" class="category"></p>
+              <p id="activityPrice" class="price">
                 <span class="iconify" data-inline="false" data-icon="mdi:cash-usd" style="font-size: 24px;"></span>
                 <span class="iconify" data-inline="false" data-icon="mdi:cash-usd" style="font-size: 24px;"></span>
                 <span class="iconify" data-inline="false" data-icon="mdi:cash-usd" style="font-size: 24px;"></span>
                 <span class="iconify" data-inline="false" data-icon="mdi:cash-usd" style="font-size: 24px;"></span>
                 <span class="iconify" data-inline="false" data-icon="mdi:cash-usd" style="font-size: 24px;"></span>
               </p>
-              <p class="participants">participants:
+              <p id="activityAccessibility" class="accessibility">
+                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
+                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
+                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
+                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
+                <span class="iconify" data-inline="false" data-icon="mdi:airplane" style="font-size: 24px;"></span>
+              </p>
+              <p id="activityParticipants" class="participants">
                 <span class="iconify" data-inline="false" data-icon="mdi:human-handsup" style="font-size: 24px;"></span>
                 <span class="iconify" data-inline="false" data-icon="mdi:human-handsup" style="font-size: 24px;"></span>
                 <span class="iconify" data-inline="false" data-icon="mdi:human-handsup" style="font-size: 24px;"></span>
@@ -55,9 +55,10 @@
               </p>
             </div>
           </div>
+          <!-- end of activity page html -->
 
           <div class="row gif">
-            <img class="image" src="https://media2.giphy.com/media/UVFztIAHhQGsyn1eTK/giphy.gif?cid=ecf05e478d88ab313843fedafbdbfb9a1f7abb2e37572d2b&rid=giphy.gif">
+            <img id="giphyUrl" class="image" src="https://media2.giphy.com/media/UVFztIAHhQGsyn1eTK/giphy.gif?cid=ecf05e478d88ab313843fedafbdbfb9a1f7abb2e37572d2b&rid=giphy.gif">
           </div>
         </div>
       </div>
@@ -65,7 +66,7 @@
 
 
       <main class="col-sm-12 row justify-content-center align-self-end main-button-div ">
-        <button class="unwaste-btn">unwaste!</button>
+        <button id="unwasteBtn" class="unwaste-btn">unwaste!</button>
       </main>
     </div>
 
@@ -77,6 +78,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
     integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
     crossorigin="anonymous"></script>
+  <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
   <script src="main.js"></script>
 </body>
 
