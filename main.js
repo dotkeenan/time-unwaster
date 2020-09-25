@@ -1,3 +1,4 @@
+// global variables and dom queries
 var unwasteBtn = document.getElementById('unwasteBtn');
 var header = document.getElementById('header');
 var activityPage = document.getElementById('activityPage');
@@ -6,27 +7,26 @@ var dataType = null;
 var dataAccessibility = null;
 var dataPrice = null;
 var dataParticipants = null;
-
-// var dataGifUrl = 'https://media4.giphy.com/media/NZ91AhP04aUZG/giphy.gif?cid=6054759byj9lgc62ipbb1esbtfzd743b5xuckmc666umdvl4&rid=giphy.gif';
 var dataGifUrl = null;
-
+// add event listener to the unwasteBtn
 unwasteBtn.addEventListener('click', homepageUnwaste);
-
+// function that makes the ajax calls and toggles d-none on appropriate elements
 function homepageUnwaste() {
   getActivity();
   toggleHide();
 }
-
+// function that hides homepage and unhides activityPage, removes previous
+// event listener and adds a new one that doesn't run toggleHide()
 function toggleHide() {
   header.classList.toggle('d-none');
   activityPage.classList.toggle('d-none');
   unwasteBtn.removeEventListener('click', homepageUnwaste);
-  unwasteBtn.addEventListener('click', function(){
-    getActivity();
-    // getGif();
-  });
+  unwasteBtn.addEventListener('click', getActivity)
 }
-
+//Makes the ajax calls.  Giphy's ajax call relies on boredAPI's call, so it's
+//nested inside of the success parameter of the boredapi call.
+//After getting all the data and setting all the variables needed, it
+// renders the dom.
 function getActivity(event) {
   $.ajax({
     url: 'https://www.boredapi.com/api/activity',
@@ -91,25 +91,6 @@ function getActivity(event) {
 //   });
 // }
 
-
-// Attemping to put this in the getActivity()
-// function getGif(event) {
-//   $.ajax({
-//     url: 'http://api.giphy.com/v1/gifs/search?q=pikachu&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=5',
-//     method: 'GET',
-//     success: function (data) {
-//       //temporary
-//       console.log(data);
-
-//     },
-//     error: function (data) {
-//       console.error(data);
-//     }
-//   });
-// }
-
-//pretty sure no way to combine getGifUrl() and getData() since it uses the
-//response data as a parameter
 function getGifUrl(giphyData)  {
   var randomNumber = Math.floor(Math.random() * 4);
   dataGifUrl = giphyData['data'][randomNumber]['images']['original']['url'];
@@ -123,16 +104,11 @@ function getData(data) {
   dataAccessibility = data['accessibility'];
   dataPrice = data['price'];
   dataParticipants = data['participants'];
-  //for testing. WORKS.
-  // console.log(dataActivity);
-  // console.log(dataType);
-  // console.log(dataAccessibility);
-  // console.log(dataPrice);
-  // console.log(dataParticipants);
-  // Eventually need to also pass in the url for the gif.
 }
 
-function renderDOM(activity, type, accessibility, price, participants) {
+// Function that renders the DOM.  Since my variables are global, I guess
+// I don't need these parameters anymore...
+function renderDOM(activity, type, accessibility, price, participants, dataGifUrl) {
 
   //if price is .12 , price = 1 money icon. etc...
 
@@ -143,7 +119,8 @@ function renderDOM(activity, type, accessibility, price, participants) {
   activityType.textContent = 'category: ' + type;
 
   var activityAccessibility = document.getElementById('activityAccessibility');
-  activityAccessibility.textContent = 'accessibility: ' + accessibility;
+  activityAccessibility.innerHTML = 'accessibility: ' + accessibility;
+  // activityAccessibility.innerHTML = 'accessibility: ' + accessibilityIconMaker(accessibility);
 
   var activityPrice = document.getElementById('activityPrice');
   activityPrice.textContent = 'price: ' + price;
@@ -155,6 +132,19 @@ function renderDOM(activity, type, accessibility, price, participants) {
   var giphyUrl = document.getElementById('giphyUrl');
   giphyUrl.setAttribute('src', dataGifUrl);
 }
+
+var activityAccessibility = document.getElementById('activityAccessibility');
+var accessibilityIcon = '<span class="iconify" data-inline="false" data-icon="mdi: airplane" style="font - size: 24px;">';
+function accessibilityIconMaker(accessibility) {
+  var accessibilityString = '';
+  console.log('value of accessibility:',accessibility);
+  for (var i = 0; i < accessibility*10; i++)  {
+    accessibilityString += accessibilityIcon;
+  }
+  console.log('value of accessibility string:', accessibilityString);
+  return accessibilityString;
+}
+
 
 
 /*create a function that converts the decimal value of a data response into icons.
