@@ -57,7 +57,9 @@ body  {
   border-radius: 100px;
 }
 
-.unwaste-btn:hover
+.unwaste-btn:hover  {
+  /* add stuff here */
+}
 
 /* ----------------------------------------End of home page CSS */
 .activity-page-div  {
