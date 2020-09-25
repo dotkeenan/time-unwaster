@@ -8,6 +8,14 @@ var dataAccessibility = null;
 var dataPrice = null;
 var dataParticipants = null;
 var dataGifUrl = null;
+
+// Icon paths/code
+var activityAccessibility = document.getElementById('activityAccessibility');
+var accessibilityIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:airplane"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"></path></svg>';
+var priceIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:cash-usd"><path d="M20 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16c1.11 0 2-.89 2-2V6a2 2 0 0 0-2-2m-5 6h-4v1h3c.55 0 1 .45 1 1v3c0 .55-.45 1-1 1h-1v1h-2v-1H9v-2h4v-1h-3c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h1V7h2v1h2v2z" fill="currentColor"></path></svg>';
+var participantsIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:human-handsup"><path d="M5 1c0 2.7 1.56 5.16 4 6.32V22h2v-7h2v7h2V7.31C17.44 6.16 19 3.7 19 1h-2a5 5 0 0 1-5 5a5 5 0 0 1-5-5m5 0c-1.11 0-2 .89-2 2c0 1.11.89 2 2 2c1.11 0 2-.89 2-2c0-1.11-.89-2-2-2z" fill="currentColor"></path></svg>';
+var freeIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="color: black; font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 64 64" class="iconify" data-inline="false" data-icon="emojione-monotone:free-button"><path d="M52 2H12C6.477 2 2 6.477 2 12v40c0 5.523 4.477 10 10 10h40c5.523 0 10-4.477 10-10V12c0-5.523-4.477-10-10-10zM18 26h-5.09v4.5H18v3h-5.09V41H10V23h8v3zm12.475 15h-3.021l-2.471-7.5h-1.125V41H21V23h5c2.758 0 5 2.355 5 5.25c0 2.197-1.293 4.084-3.121 4.865L30.475 41zM42 26h-5.09v4.5H42v3h-5.09V38H42v3h-8V23h8v3zm12 0h-5.09v4.5H54v3h-5.09V38H54v3h-8V23h8v3z" fill="currentColor"></path><path d="M26 26h-2.143v4.5H26c1.182 0 2.143-1.01 2.143-2.25S27.182 26 26 26z" fill="currentColor"></path></svg>';
+
 // add event listener to the unwasteBtn
 unwasteBtn.addEventListener('click', homepageUnwaste);
 // function that makes the ajax calls and toggles d-none on appropriate elements
@@ -60,6 +68,99 @@ function getActivity(event) {
   });
 }
 
+function getGifUrl(giphyData)  {
+  var randomNumber = Math.floor(Math.random() * 4);
+  dataGifUrl = giphyData['data'][randomNumber]['images']['original']['url'];
+  console.log('url of giphy request:', dataGifUrl);
+  // renderDOM(gifUrl);
+}
+
+function getData(data) {
+  dataActivity = data['activity'];
+  dataType = data['type'];
+  dataAccessibility = data['accessibility'];
+  dataPrice = data['price'];
+  dataParticipants = data['participants'];
+}
+
+// Function that renders the DOM.  Since my variables are global, I guess
+// I don't need these parameters anymore...
+function renderDOM(activity, type, accessibility, price, participants, dataGifUrl) {
+
+  //if price is .12 , price = 1 money icon. etc...
+
+  var activityName = document.getElementById('activityName')
+  activityName.textContent = activity;
+
+  var activityType = document.getElementById('activityType');
+  activityType.textContent = 'category: ' + type;
+
+  var activityAccessibility = document.getElementById('activityAccessibility');
+  activityAccessibility.innerHTML = 'accessibility: ' + convertToIcons(
+    accessibility,
+    accessibilityIcon
+    );
+
+  var activityPrice = document.getElementById('activityPrice');
+  activityPrice.innerHTML = 'price: ' + convertToIcons(
+    price,
+    priceIcon
+  );
+
+  var activityParticipants = document.getElementById('activityParticipants');
+  activityParticipants.innerHTML = 'participants: ' + convertToIcons(
+    participants,
+    participantsIcon
+  );
+
+  // console.log(dataGifUrl);
+  var giphyUrl = document.getElementById('giphyUrl');
+  giphyUrl.setAttribute('src', dataGifUrl);
+}
+
+// function accessibilityIconMaker(accessibility) {
+//   var accessibilityString = '';
+//   console.log('value of accessibility:',accessibility);
+//   for (var i = 0; i < accessibility; i++)  {
+//     accessibilityString += accessibilityIcon;
+//   }
+//   console.log('value of accessibility string:', accessibilityString);
+//   return accessibilityString;
+// }
+
+/*create a function that converts the value of a data response into a string of icons.
+returns the concatenated string of icons (html code to be used with innerHTML).
+*/
+function convertToIcons(dataValue, detailsIcon) {
+  var iconAmt = null;
+  var iconString = '';
+  if (dataValue === 0) {
+    iconAmt = 0;
+    // This doesn't work here because it will occur on accessibility too.
+    // iconString = freeIcon;
+  } else if (dataValue > 0 && dataValue < 0.25)  {
+    iconAmt = 1;
+  } else if (dataValue >= 0.25 && dataValue < 0.5)  {
+    iconAmt = 2;
+  } else if (dataValue >= 0.5 && dataValue < 0.75)  {
+    iconAmt = 3;
+  } else if (dataValue >= 0.75 && dataValue < 1.0) {
+    iconAmt = 4;
+  } else if (dataValue === 1.0) {
+    iconAmt = 5;
+  } else  {
+    console.log('Something went wrong');
+  }
+  for(var i = 0; i < iconAmt; i++)  {
+    iconString += detailsIcon;
+  }
+  // for testing
+  // console.log(iconString);
+  return iconString;
+  // return iconString;
+}
+
+
 // Previous code that almost worked but dataActivity didnt update fast enough
 // function getActivity(event) {
 //   $.ajax({
@@ -91,83 +192,4 @@ function getActivity(event) {
 //   });
 // }
 
-function getGifUrl(giphyData)  {
-  var randomNumber = Math.floor(Math.random() * 4);
-  dataGifUrl = giphyData['data'][randomNumber]['images']['original']['url'];
-  console.log('url of giphy request:', dataGifUrl);
-  // renderDOM(gifUrl);
-}
-
-function getData(data) {
-  dataActivity = data['activity'];
-  dataType = data['type'];
-  dataAccessibility = data['accessibility'];
-  dataPrice = data['price'];
-  dataParticipants = data['participants'];
-}
-
-// Function that renders the DOM.  Since my variables are global, I guess
-// I don't need these parameters anymore...
-function renderDOM(activity, type, accessibility, price, participants, dataGifUrl) {
-
-  //if price is .12 , price = 1 money icon. etc...
-
-  var activityName = document.getElementById('activityName')
-  activityName.textContent = activity;
-
-  var activityType = document.getElementById('activityType');
-  activityType.textContent = 'category: ' + type;
-
-  var activityAccessibility = document.getElementById('activityAccessibility');
-  activityAccessibility.innerHTML = 'accessibility: ' + accessibility;
-  // activityAccessibility.innerHTML = 'accessibility: ' + accessibilityIconMaker(accessibility);
-
-  var activityPrice = document.getElementById('activityPrice');
-  activityPrice.textContent = 'price: ' + price;
-
-  var activityParticipants = document.getElementById('activityParticipants');
-  activityParticipants.textContent = 'participants: ' + participants;
-
-  // console.log(dataGifUrl);
-  var giphyUrl = document.getElementById('giphyUrl');
-  giphyUrl.setAttribute('src', dataGifUrl);
-}
-
-//Attempt at creating amt of icons based on decimal returned * 10 to be a whole number.
-var activityAccessibility = document.getElementById('activityAccessibility');
-var accessibilityIcon = '<span class="iconify" data-inline="false" data-icon="mdi: airplane" style="font - size: 24px;">';
-function accessibilityIconMaker(accessibility) {
-  var accessibilityString = '';
-  console.log('value of accessibility:',accessibility);
-  for (var i = 0; i < accessibility*10; i++)  {
-    accessibilityString += accessibilityIcon;
-  }
-  console.log('value of accessibility string:', accessibilityString);
-  return accessibilityString;
-}
-
-
-
-/*create a function that converts the decimal value of a data response into icons.
-returns the amount of icons to use.
-*/
-// Haven't tested this and no clue if this works.
-// function convertToIcons() {
-//   var iconAmt = null;
-//   if (price === 0) {
-//     iconAmt = 'Free!';
-//   } else if (price > 0 && price < 0.25)  {
-//     iconAmt = 1;
-//   } else if (price >= 0.25 && price < 0.5)  {
-//     iconAmt = 2;
-//   } else if (price >= 0.5 && price < 0.75)  {
-//     iconAmt = 3;
-//   } else if (price >= 0.75 && < 1.0) {
-//     iconAmt = 4;
-//   } else if (price === 1.0) {
-//     iconAmt = 5;
-//   } else  {
-//     console.log('Something went wrong');
-//   }
-//   return iconAmt;
-// }
+{/* <svg xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:cash-usd"><path d="M20 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16c1.11 0 2-.89 2-2V6a2 2 0 0 0-2-2m-5 6h-4v1h3c.55 0 1 .45 1 1v3c0 .55-.45 1-1 1h-1v1h-2v-1H9v-2h4v-1h-3c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h1V7h2v1h2v2z" fill="currentColor"></path></svg> */}
