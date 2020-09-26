@@ -55,6 +55,7 @@ body  {
   border: none;
   border-radius: 100px;
   /* new animation stuff */
+  /* change the next line.  Scale is getting affected by the transition as well */
   transform: translate(-275px) scale(1.0);
   transition: transform 800ms cubic-bezier(0, 2.2, 0.68, 0.86);
 }
@@ -69,10 +70,9 @@ body  {
   transform: scale(1.1);
 }
 
-
 .rotate-hor-center {
 	-webkit-animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-	        animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 }
 
 @-webkit-keyframes rotate-hor-center {
@@ -94,6 +94,15 @@ body  {
     -webkit-transform: rotateX(-360deg);
             transform: rotateX(-360deg);
   }
+}
+
+.acitivty-info-animate  {
+  animation-name: flip;
+  animation-duration: 3000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* probably unnecessary */
+  animation-play-state: running;
 }
 
 
