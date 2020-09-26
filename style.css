@@ -15,9 +15,7 @@ body  {
 .content  {
   height: 100%;
   /* min-height: 667px; */
-  background: url(assets/images/pUAM5hPaCRI.png);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: url(assets/images/pUAM5hPaCRI.png) center / cover no-repeat ;
 }
 
 .content-row {
@@ -77,7 +75,6 @@ body  {
 .h1-activity-content  {
   font-size: 1.5rem;
   font-weight: bold;
-  padding: 0;
   margin-top: 10px;
   /* border-bottom: 2px solid black; */
 }
@@ -95,7 +92,19 @@ body  {
 .gif-container  {
   width: 100%;
   max-height: 250px;
+  /* experiment for using background-image instead of img tag. */
+  /* height: 100vh; */
 }
+
+/* experiment for using background-image instead of img tag. */
+/* .gif-div  {
+  width: 100%;
+  height: 100%;
+  border: 2px solid red;
+  background-image: url(https://media2.giphy.com/media/UVFztIAHhQGsyn1eTK/giphy.gif?cid=ecf05e478d88ab313843fedafbdbfb9a1f7abb2e37572d2b&rid=giphy.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+} */
 
 .image {
   border: 3px solid white;
