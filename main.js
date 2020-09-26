@@ -23,6 +23,7 @@ unwasteBtn.addEventListener('click', homepageUnwaste);
 
 // function that makes the ajax calls and toggles d-none on appropriate elements
 function homepageUnwaste() {
+  btnFlip();
   getActivity();
   toggleHide();
   toggleShow();
@@ -30,9 +31,18 @@ function homepageUnwaste() {
 }
 
 // Function to alter the eventListener on unwasteBtn
+// function alterUnwasteBtnAction() {
+//   unwasteBtn.removeEventListener('click', homepageUnwaste);
+//   unwasteBtn.addEventListener('click', getActivity)
+// }
+
+// Experimental for animations
 function alterUnwasteBtnAction() {
   unwasteBtn.removeEventListener('click', homepageUnwaste);
-  unwasteBtn.addEventListener('click', getActivity)
+  unwasteBtn.addEventListener('click', function() {
+    getActivity();
+    btnFlip();
+  })
 }
 
 // function to show the activity page
@@ -202,7 +212,8 @@ function convertParticipantIcons(dataValue, detailsIcon) {
 // only triggers the animation every other click, due to toggling. need help.
 var trigger = document.getElementById('trigger');
 trigger.addEventListener('click', function(){
-  unwasteBtn.classList.toggle('rotate-hor-center');
+  unwasteBtn.classList.add('rotate-hor-center');
+  unwasteBtn.addEventListener('animationend', btnFlipListener);
 });
 
 window.onload = function()  {
@@ -217,6 +228,36 @@ function animationLogo()  {
 
 }
 
-function toggleFlip() {
-  unwasteBtn.classList.toggle('rotate-hor-center');
+// function btnFlip()  {
+//   unwasteBtn.className = 'unwaste-btn rotate-hor-center';
+// }
+
+// var animationEnd = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
+// function btnFlip() {
+//   // unwasteBtn.classList.toggle('rotate-hor-center');
+//   unwasteBtn.classList.add('rotate-hor-center');
+//   unwasteBtn.addEventListener(animationEnd, function(){
+//     unwasteBtn.classList.remove('rotate-hor-center')
+//   })
+// }
+
+// Working way to make animation happen every click, but uses jQuery.
+var animationEnd = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
+// $(unwasteBtn).click(function()  {
+//   $(this).addClass('rotate-hor-center');
+//   $(this).on(animationEnd, function(event) {
+//     $(this).removeClass('rotate-hor-center');
+//   });
+// })
+
+// Working version of above without jQuery.  Seems to be fine. Prevented accumulating
+// more event listeners on the element with each click.
+function btnFlip(){
+  unwasteBtn.classList.add('rotate-hor-center');
+  unwasteBtn.addEventListener('animationend', btnFlipListener);
+}
+
+function btnFlipListener()  {
+  unwasteBtn.classList.remove('rotate-hor-center');
+  unwasteBtn.removeEventListener('animationend',)
 }
