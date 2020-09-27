@@ -8,9 +8,12 @@ var dataAccessibility = null;
 var dataPrice = null;
 var dataParticipants = null;
 var dataGifUrl = null;
-// dom queries for animations
+// dom queries for animation related elements
 var gifContainer = document.querySelector('.gif-container');
 var activityInfo = document.querySelector('.activity-info');
+var logo = document.querySelector('.logo');
+var h1Content = document.querySelector('.h1-content');
+var h2Content = document.querySelector('.h2-content');
 
 // Icon paths/code
 var accessibilityIcon = '<img src="/assets/images/accessibility.svg" alt="accessibility icon">';
@@ -77,7 +80,6 @@ function dataCollector(data)  {
     getData(data);
 
     $.ajax({
-      // url: 'http://api.giphy.com/v1/gifs/search?q=' + dataActivity + '&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=4&rating=pg-13',
       url: 'http://api.giphy.com/v1/gifs/search',
       method: 'GET',
       data: {
@@ -106,9 +108,7 @@ function dataCollector(data)  {
 // Function to choose a random gif from a 5 item search query and store the url
 function getGifUrl(giphyData)  {
   var randomNumber = Math.floor(Math.random() * 4);
-  // dataGifUrl = giphyData['data'][randomNumber]['images']['original']['url'];
   dataGifUrl = giphyData.data[randomNumber].images.original.url;
-  // console.log('url of giphy request:', dataGifUrl);
 }
 
 // Function to store all the necessary data from the boredAPI ajax call.
@@ -184,10 +184,7 @@ function convertToIcons(dataValue, detailsIcon, detailType) {
   for(var i = 0; i < iconAmt; i++)  {
     iconString += detailsIcon;
   }
-  // for testing
-  // console.log(iconString);
   return iconString;
-  // return iconString;
 }
 
 // separate icon conversion function for participants because it follows a
@@ -203,7 +200,8 @@ function convertParticipantIcons(dataValue, detailsIcon) {
   return iconString;
 }
 
-// animation testing
+// -----------------------------animation functions
+// function to run animations on page load.
 window.onload = function()  {
   animateBtn();
   animationLogo()
@@ -211,32 +209,29 @@ window.onload = function()  {
   setTimeout(h2ContentAnimation, 300);
 }
 
+// add animation class to unwasteBtn
 function animateBtn() {
   unwasteBtn.classList.add('unwaste-btn-animate');
 }
-
-var logo = document.querySelector('.logo');
+// add animation class to logo
 function animationLogo()  {
   logo.classList.add('logo-animate');
 }
-
-var h1Content = document.querySelector('.h1-content');
+// add animation class to h1Content
 function h1ContentAnimation() {
-  h1Content.classList.add('h1-content-animation')
+  h1Content.classList.add('heading-content-animation')
 }
-
-var h2Content = document.querySelector('.h2-content');
+//add animation class to h2Content
 function h2ContentAnimation() {
-  h2Content.classList.add('h1-content-animation')
+  h2Content.classList.add('heading-content-animation')
 }
-
 
 // handles flip animation for activity info
 function activityInfoAnimation()  {
   activityInfo.classList.add('rotate-hor-center');
   activityInfo.addEventListener('animationend', activityInfoListener)
 }
-
+// remove class and event listener on animation end.
 function activityInfoListener() {
   activityInfo.classList.remove('rotate-hor-center');
   activityInfo.removeEventListener('animationend', activityInfoListener);
@@ -247,7 +242,7 @@ function gifContainerAnimation() {
   gifContainer.classList.add('rotate-hor-center');
   gifContainer.addEventListener('animationend', gifContainerListener);
 }
-
+// remove class and event listener on animation end.
 function gifContainerListener() {
   gifContainer.classList.remove('rotate-hor-center');
   gifContainer.removeEventListener('animationend', gifContainerListener);
@@ -262,12 +257,10 @@ function gifContainerListener() {
 //   unwasteBtn.classList.add('rotate-hor-center');
 //   unwasteBtn.addEventListener('animationend', btnFlipListener);
 // }
-
 // function btnFlipListener()  {
 //   unwasteBtn.classList.remove('rotate-hor-center');
 //   unwasteBtn.removeEventListener('animationend', btnFlipListener);
 // }
-
 
 // Working way to make animation happen every click, but uses jQuery.
 // var animationEnd = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
