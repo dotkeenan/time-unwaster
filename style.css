@@ -32,13 +32,52 @@ body  {
   font-size: 3rem;
   margin-top: 15px;
   padding: 0;
+  opacity: 0;
 }
 
+.h1-content-animation {
+  animation: animationFrames linear 0.8s;
+  animation-iteration-count: 1;
+  animation-delay: 800ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes animationFrames{
+  0% {
+    transform:  translate(0px,-50px);
+    opacity: 0;
+  }
+  15% {
+    transform:  translate(0px,-25px);
+    opacity: 0;
+  }
+  30% {
+    transform:  translate(0px,0px);
+    opacity: 0;
+  }
+  45% {
+    transform:  translate(0px,-15px);
+    opacity: 1;
+  }
+  60% {
+    transform:  translate(0px,0px);
+    opacity: 1;
+  }
+  75% {
+    transform:  translate(0px,-5px);
+    opacity: 1;
+  }
+  100% {
+    transform:  translate(0px,0px);
+    opacity: 1;
+  }
+}
 
 .h2-content  {
   font-size: 1.25rem;
   margin-top: 15px;
   padding: 0;
+  opacity: 0;
 }
 
 .main-button-div  {
@@ -56,14 +95,14 @@ body  {
   border-radius: 100px;
   /* new animation stuff */
   /* change the next line.  Scale is getting affected by the transition as well */
-  transform: translate(-275px) scale(1.0);
+  transform: translate(-2750px) scale(1.0);
   /* transition: transform 800ms cubic-bezier(0, 2.2, 0.68, 0.86); */
   transition: transform 800ms cubic-bezier(0.85, 0.9, 0, 2.3);
 }
 
 /* this is affected by the timing function as well */
 .unwaste-btn:hover  {
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 /* new animation stuff */
@@ -72,6 +111,7 @@ body  {
   animation-name: bounce-in;
   animation-duration: 1000ms;
   animation-timing-function: ease-in;
+  animation-delay: 1600ms;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   /* animation-play-state: running; */
@@ -144,7 +184,6 @@ body  {
   }
 }
 
-
 .rotate-hor-center {
 	-webkit-animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
 	animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
@@ -168,6 +207,37 @@ body  {
   100% {
     -webkit-transform: rotateX(-360deg);
     transform: rotateX(-360deg);
+  }
+}
+
+.logo {
+  transform: scale(1);
+}
+
+.logo-animate {
+  animation-name: grow;
+  animation-duration: 800ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+
+@keyframes grow {
+  0%  {
+    transform: scale(0);
+  }
+  70%  {
+    transform: scale(1.5);
+  }
+  80%  {
+    transform: scale(.75);
+  }
+  90%  {
+    transform: scale(1.15);
+  }
+  100%  {
+    transform: scale(1);
   }
 }
 

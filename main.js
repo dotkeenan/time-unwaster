@@ -204,24 +204,33 @@ function convertParticipantIcons(dataValue, detailsIcon) {
 }
 
 // animation testing
-// only triggers the animation every other click, due to toggling. need help.
-var trigger = document.getElementById('trigger');
-trigger.addEventListener('click', function(){
-  unwasteBtn.classList.add('rotate-hor-center');
-  unwasteBtn.addEventListener('animationend', btnFlipListener);
-});
-
 window.onload = function()  {
   animateBtn();
+  animationLogo()
+  h1ContentAnimation()
+  setTimeout(h2ContentAnimation, 300);
 }
 
 function animateBtn() {
   unwasteBtn.classList.add('unwaste-btn-animate');
 }
 
+var logo = document.querySelector('.logo');
 function animationLogo()  {
-
+  logo.classList.add('logo-animate');
 }
+
+var h1Content = document.querySelector('.h1-content');
+function h1ContentAnimation() {
+  h1Content.classList.add('h1-content-animation')
+}
+
+var h2Content = document.querySelector('.h2-content');
+function h2ContentAnimation() {
+  h2Content.classList.add('h1-content-animation')
+}
+
+
 // handles flip animation for activity info
 function activityInfoAnimation()  {
   activityInfo.classList.add('rotate-hor-center');
