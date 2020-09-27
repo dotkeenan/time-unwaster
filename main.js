@@ -8,6 +8,9 @@ var dataAccessibility = null;
 var dataPrice = null;
 var dataParticipants = null;
 var dataGifUrl = null;
+// dom queries for animations
+var gifContainer = document.querySelector('.gif-container');
+var activityInfo = document.querySelector('.activity-info');
 
 // Icon paths/code
 var accessibilityIcon = '<img src="/assets/images/accessibility.svg" alt="accessibility icon">';
@@ -23,29 +26,21 @@ unwasteBtn.addEventListener('click', homepageUnwaste);
 
 // function that makes the ajax calls and toggles d-none on appropriate elements
 function homepageUnwaste() {
-  // btnFlip();
   activityInfoAnimation();
+  setTimeout(gifContainerAnimation, 300);
   getActivity();
   toggleHide();
   toggleShow();
   alterUnwasteBtnAction();
-
 }
-
-// Function to alter the eventListener on unwasteBtn
-// function alterUnwasteBtnAction() {
-//   unwasteBtn.removeEventListener('click', homepageUnwaste);
-//   unwasteBtn.addEventListener('click', getActivity)
-// }
 
 // Experimental for animations
 function alterUnwasteBtnAction() {
   unwasteBtn.removeEventListener('click', homepageUnwaste);
   unwasteBtn.addEventListener('click', function() {
-    activityInfoAnimation();
     getActivity();
-    // btnFlip();
-
+    activityInfoAnimation();
+    setTimeout(gifContainerAnimation, 300);
   })
 }
 
@@ -141,9 +136,6 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
     accessibilityIcon,
     activityAccessibility.id
     );
-  // temporary
-  // console.log('id', activityAccessibility.id);
-  // console.log(activityAccessibility);
 
   var activityPrice = document.getElementById('activityPrice');
   activityPrice.innerHTML = 'price: ' + convertToIcons(
@@ -157,13 +149,12 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
     participantsIcon
   );
 
-  // console.log(dataGifUrl);
+  //experiment setTimeout to make gif load slower so the gif doesn't
+  // change before the flip animation
   var giphyUrl = document.getElementById('giphyUrl');
-  giphyUrl.setAttribute('src', dataGifUrl);
-
-  // experiment for using css background img instead of img tag.
-  // var gifDiv = document.getElementById('gifDiv');
-  // gifDiv.style.background = "url('" + dataGifUrl + "')"
+  setTimeout(function(){
+    giphyUrl.setAttribute('src', dataGifUrl);
+  }, 250);
 }
 
 /*create a function that converts the value of a data response into a string of icons.
@@ -231,19 +222,27 @@ function animateBtn() {
 function animationLogo()  {
 
 }
-
-var activityInfo = document.querySelector('.activity-info');
+// handles flip animation for activity info
 function activityInfoAnimation()  {
   activityInfo.classList.add('rotate-hor-center');
   activityInfo.addEventListener('animationend', activityInfoListener)
 }
 
 function activityInfoListener() {
-  console.log('remove')
   activityInfo.classList.remove('rotate-hor-center');
   activityInfo.removeEventListener('animationend', activityInfoListener);
 }
 
+// handles flip animation for gif
+function gifContainerAnimation() {
+  gifContainer.classList.add('rotate-hor-center');
+  gifContainer.addEventListener('animationend', gifContainerListener);
+}
+
+function gifContainerListener() {
+  gifContainer.classList.remove('rotate-hor-center');
+  gifContainer.removeEventListener('animationend', gifContainerListener);
+}
 
 
 

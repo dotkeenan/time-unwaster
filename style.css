@@ -57,18 +57,93 @@ body  {
   /* new animation stuff */
   /* change the next line.  Scale is getting affected by the transition as well */
   transform: translate(-275px) scale(1.0);
-  transition: transform 800ms cubic-bezier(0, 2.2, 0.68, 0.86);
-}
-
-/* new animation stuff */
-.unwaste-btn-animate  {
-  transform: translate(0px);
+  /* transition: transform 800ms cubic-bezier(0, 2.2, 0.68, 0.86); */
+  transition: transform 800ms cubic-bezier(0.85, 0.9, 0, 2.3);
 }
 
 /* this is affected by the timing function as well */
 .unwaste-btn:hover  {
   transform: scale(1.1);
 }
+
+/* new animation stuff */
+.unwaste-btn-animate  {
+  /* transform: translate(0px); */
+  animation-name: bounce-in;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  /* animation-play-state: running; */
+}
+
+/* There must be a better shorter way to do this... */
+@keyframes bounce-in  {
+  0%  {
+    transform: translate(-275px);
+  }
+  10% {
+    transform: translate(110px);
+  }
+  15% {
+    transform: translate(115px);
+  }
+  20% {
+    transform: translate(120px);
+  }
+  25% {
+    transform: translate(120px);
+  }
+  30% {
+    transform: translate(115px);
+  }
+  40% {
+    transform: translate(110px);
+  }
+  50% {
+    transform: translate(90px);
+  }
+  55% {
+    transform: translate(0px);
+  }
+  60% {
+    transform: translate(90px);
+  }
+  65% {
+    transform: translate(0px);
+  }
+  70% {
+    transform: translate(75px);
+  }
+  75% {
+    transform: translate(0px);
+  }
+  80% {
+    transform: translate(60px);
+  }
+  85% {
+    transform: translate(0px);
+  }
+  90% {
+    transform: translate(45px);
+  }
+  92% {
+    transform: translate(0px);
+  }
+  94% {
+    transform: translate(30px);
+  }
+  96% {
+    transform: translate(0px);
+  }
+  98% {
+    transform: translate(15px);
+  }
+  100%  {
+    transform: translate(0px);
+  }
+}
+
 
 .rotate-hor-center {
 	-webkit-animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
@@ -78,32 +153,32 @@ body  {
 @-webkit-keyframes rotate-hor-center {
   0% {
     -webkit-transform: rotateX(0);
-            transform: rotateX(0);
+    transform: rotateX(0);
   }
   100% {
     -webkit-transform: rotateX(-360deg);
-            transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
   }
 }
 @keyframes rotate-hor-center {
   0% {
     -webkit-transform: rotateX(0);
-            transform: rotateX(0);
+    transform: rotateX(0);
   }
   100% {
     -webkit-transform: rotateX(-360deg);
-            transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
   }
 }
 
-.acitivty-info-animate  {
-  animation-name: flip;
+/* .acitivty-info-animate  {
+  animation-name: spin;
   animation-duration: 3000ms;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  /* probably unnecessary */
   animation-play-state: running;
-}
+} */
+
 
 
 /* ----------------------------------------End of home page CSS */
