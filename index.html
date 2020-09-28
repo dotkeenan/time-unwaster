@@ -16,7 +16,7 @@
 
       <!-- home page section header-->
       <header id="header" class="header-class">
-        <div id="logoContainer" class="text-center">
+        <div id="logoContainer" class="text-center logo-container">
           <img class="logo" src="assets/images/logo.svg" alt="Time Unwaster Logo">
         </div>
         <h1 class=" text-center text-white h1-content">time unwaster</h1>
@@ -25,7 +25,7 @@
       <!-- end of home page header section -->
 
       <!-- start of activity page html -->
-      <div id="activityPage" class="container activity-page-div d-none">
+      <div id="activityPage" class="container activity-page-div hidden">
         <div class="row justify-content-center">
           <div class="row activity-info">
             <h1 id="activityName" class=" text-center h1-activity-content">Hello</h1>
@@ -47,14 +47,16 @@
         </div>
       </div>
 
-      <main class="row justify-content-center align-self-end main-button-div">
-        <button id="unwasteBtn" class="unwaste-btn">unwaste!</button>
-      </main>
+      <div class="button-container align-self-end">
+        <main class="row justify-content-center align-self-end main-button-div">
+          <button id="unwasteBtn" class="unwaste-btn">unwaste!</button>
+        </main>
+      </div>
     </div>
 
   </div>
 
-  <div class="modal-overlay d-none">
+  <div class="modal-overlay hidden">
     <div class="modal-content">
       <h2 class="ajaxErrorH2">Uh oh</h2>
       <p class="ajaxErrorP">There was an error getting a response from the API</p>

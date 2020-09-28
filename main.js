@@ -28,7 +28,7 @@ var homeIcon = '<img src="/assets/images/home2mini.svg" alt="Work from home icon
 var modalOverlay = document.querySelector('.modal-overlay');
 var exitModal = document.querySelector('.exit-modal');
 exitModal.addEventListener('click', function () {
-  modalOverlay.classList.add('d-none');
+  modalOverlay.classList.add('hidden');
 })
 
 // add event listener to the unwasteBtn
@@ -56,12 +56,12 @@ function alterUnwasteBtnAction() {
 
 // function to show the activity page
 function toggleShow() {
-  activityPage.classList.remove('d-none');
+  activityPage.classList.remove('hidden');
 }
 
 // function to hide the home page
 function toggleHide() {
-  header.classList.add('d-none');
+  header.classList.add('hidden');
 }
 
 //Makes the ajax calls.  Giphy's ajax call relies on boredAPI's call, so it's
@@ -116,7 +116,7 @@ function dataCollector(data)  {
 
 // show error modal if there is an api response error
 function displayError(test) {
-  modalOverlay.classList.remove('d-none');
+  modalOverlay.classList.remove('hidden');
 }
 
 // Function to choose a random gif from a 5 item search query and store the url
