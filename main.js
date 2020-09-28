@@ -134,13 +134,14 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
   activityAccessibility.innerHTML = 'accessibility: ' + convertToIcons(
     accessibility,
     accessibilityIcon,
-    activityAccessibility.id
+    // activityAccessibility.id
     );
 
   var activityPrice = document.getElementById('activityPrice');
   activityPrice.innerHTML = 'price: ' + convertToIcons(
     price,
-    priceIcon
+    priceIcon,
+    activityPrice.id
   );
 
   var activityParticipants = document.getElementById('activityParticipants');
@@ -168,9 +169,9 @@ function convertToIcons(dataValue, detailsIcon, detailType) {
     // if (detailType === activityAccessibility.id) {
     //   iconString = homeIcon;
     // } else  iconString = freeIcon;
-    if (detailType === activityAccessibility.id) {
-      iconString = homeIcon;
-    } else  iconString = freeIcon;
+    if (detailType === activityPrice.id) {
+      iconString = freeIcon;
+    } else  iconString = accessibilityIcon;
   } else if (dataValue > 0 && dataValue < 0.25)  {
     iconAmt = 1;
   } else if (dataValue >= 0.25 && dataValue < 0.5)  {
