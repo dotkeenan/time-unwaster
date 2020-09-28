@@ -8,80 +8,130 @@ var dataAccessibility = null;
 var dataPrice = null;
 var dataParticipants = null;
 var dataGifUrl = null;
+// dom queries for animation related elements
+var gifContainer = document.querySelector('.gif-container');
+var activityInfo = document.querySelector('.activity-info');
+var logo = document.querySelector('.logo');
+var h1Content = document.querySelector('.h1-content');
+var h2Content = document.querySelector('.h2-content');
 
 // Icon paths/code
-var accessibilityIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:airplane"><path d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2A1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1l3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"></path></svg>';
+var accessibilityIcon = '<img src="/assets/images/accessibility.svg" alt="accessibility icon">';
+// This SVG is bugged or something.  It works on line 16, but not on 15 when I turn it into a svg.
+// var priceIcon = '<img src="/assets/images/price.svg" alt="price icon">';
 var priceIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:cash-usd"><path d="M20 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16c1.11 0 2-.89 2-2V6a2 2 0 0 0-2-2m-5 6h-4v1h3c.55 0 1 .45 1 1v3c0 .55-.45 1-1 1h-1v1h-2v-1H9v-2h4v-1h-3c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h1V7h2v1h2v2z" fill="currentColor"></path></svg>';
-var participantsIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:human-handsup"><path d="M5 1c0 2.7 1.56 5.16 4 6.32V22h2v-7h2v7h2V7.31C17.44 6.16 19 3.7 19 1h-2a5 5 0 0 1-5 5a5 5 0 0 1-5-5m5 0c-1.11 0-2 .89-2 2c0 1.11.89 2 2 2c1.11 0 2-.89 2-2c0-1.11-.89-2-2-2z" fill="currentColor"></path></svg>';
-var freeIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="color: black; font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 64 64" class="iconify" data-inline="false" data-icon="emojione-monotone:free-button"><path d="M52 2H12C6.477 2 2 6.477 2 12v40c0 5.523 4.477 10 10 10h40c5.523 0 10-4.477 10-10V12c0-5.523-4.477-10-10-10zM18 26h-5.09v4.5H18v3h-5.09V41H10V23h8v3zm12.475 15h-3.021l-2.471-7.5h-1.125V41H21V23h5c2.758 0 5 2.355 5 5.25c0 2.197-1.293 4.084-3.121 4.865L30.475 41zM42 26h-5.09v4.5H42v3h-5.09V38H42v3h-8V23h8v3zm12 0h-5.09v4.5H54v3h-5.09V38H54v3h-8V23h8v3z" fill="currentColor"></path><path d="M26 26h-2.143v4.5H26c1.182 0 2.143-1.01 2.143-2.25S27.182 26 26 26z" fill="currentColor"></path></svg>';
-var homeIcon = '<img src="/assets/images/home2mini.svg" alt="Work from home icon">'
+var participantsIcon = '<img src="/assets/images/participants.svg" alt="participants icon">';
+var freeIcon = '<img src="/assets/images/free.svg" alt="free icon">';
+var homeIcon = '<img src="/assets/images/home2mini.svg" alt="Work from home icon">';
+
+//Dom Query for Modal Stuff
+var modalOverlay = document.querySelector('.modal-overlay');
+var exitModal = document.querySelector('.exit-modal');
+exitModal.addEventListener('click', function () {
+  modalOverlay.classList.add('d-none');
+})
 
 // add event listener to the unwasteBtn
 unwasteBtn.addEventListener('click', homepageUnwaste);
+
 // function that makes the ajax calls and toggles d-none on appropriate elements
 function homepageUnwaste() {
   getActivity();
+  activityInfoAnimation();
+  setTimeout(gifContainerAnimation, 300);
   toggleHide();
+  toggleShow();
+  alterUnwasteBtnAction();
 }
-// function that hides homepage and unhides activityPage, removes previous
-// event listener and adds a new one that doesn't run toggleHide()
-function toggleHide() {
-  header.classList.toggle('d-none');
-  activityPage.classList.toggle('d-none');
+
+// Experimental for animations
+function alterUnwasteBtnAction() {
   unwasteBtn.removeEventListener('click', homepageUnwaste);
-  unwasteBtn.addEventListener('click', getActivity)
+  unwasteBtn.addEventListener('click', function() {
+    getActivity();
+    activityInfoAnimation();
+    setTimeout(gifContainerAnimation, 300);
+  })
 }
+
+// function to show the activity page
+function toggleShow() {
+  activityPage.classList.remove('d-none');
+}
+
+// function to hide the home page
+function toggleHide() {
+  header.classList.add('d-none');
+}
+
 //Makes the ajax calls.  Giphy's ajax call relies on boredAPI's call, so it's
 //nested inside of the success parameter of the boredapi call.
 //After getting all the data and setting all the variables needed, it
-// renders the dom.
+// manipulates the dom.
 function getActivity(event) {
   $.ajax({
     url: 'https://www.boredapi.com/api/activity',
     method: 'GET',
-    success: function (data) {
-      //temporary
-      console.log('boredapi data response:', data);
-      getData(data);
-
-      $.ajax({
-        url: 'http://api.giphy.com/v1/gifs/search?q=' + dataActivity + '&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=4&rating=pg-13',
-        method: 'GET',
-        success: function (giphyData) {
-          //temporary
-          console.log('giphy data response:', giphyData);
-          // console.log('value of dataActivity', dataActivity);
-          // console.log('the ajax call url:', this.url);
-          getGifUrl(giphyData);
-          renderDOM(dataActivity, dataType, dataAccessibility, dataPrice, dataParticipants, dataGifUrl);
-
-        },
-        error: function (giphyData) {
-          console.error(giphyData);
-        }
-      });
-
-    },
+    success: dataCollector,
     error: function (data) {
       console.error(data);
+      displayError(data);
+      // add a visual indicator for the error on screen
     }
   });
+}
+
+// created a named function to clean up the success of getActivity.
+function dataCollector(data)  {
+    //temporary
+    console.log('boredapi data response:', data);
+    getData(data);
+
+    $.ajax({
+      url: 'http://api.giphy.com/v1/gifs/search',
+      method: 'GET',
+      data: {
+        q: dataActivity,
+        api_key: "AnFYADkBtWuOmpgnk3muJuAaq10wGSb8",
+        rating: "pg-13",
+        limit: "4",
+        lang: "en"
+      },
+      success: function (giphyData) {
+        //temporary
+        console.log('giphy data response:', giphyData);
+        // console.log('value of dataActivity', dataActivity);
+        // console.log('the ajax call url:', this.url);
+        getGifUrl(giphyData);
+        renderDOM(dataActivity, dataType, dataAccessibility, dataPrice, dataParticipants, dataGifUrl);
+
+      },
+      error: function (giphyData) {
+        console.error(giphyData);
+        displayError(giphyData);
+        //add a visual indicator for the error on screen
+      }
+    });
+}
+
+// show error modal if there is an api response error
+function displayError(test) {
+  modalOverlay.classList.remove('d-none');
 }
 
 // Function to choose a random gif from a 5 item search query and store the url
 function getGifUrl(giphyData)  {
   var randomNumber = Math.floor(Math.random() * 4);
-  dataGifUrl = giphyData['data'][randomNumber]['images']['original']['url'];
-  // console.log('url of giphy request:', dataGifUrl);
+  dataGifUrl = giphyData.data[randomNumber].images.original.url;
 }
 
 // Function to store all the necessary data from the boredAPI ajax call.
 function getData(data) {
-  dataActivity = data['activity'];
-  dataType = data['type'];
-  dataAccessibility = data['accessibility'];
-  dataPrice = data['price'];
-  dataParticipants = data['participants'];
+  dataActivity = data.activity;
+  dataType = data.type;
+  dataAccessibility = data.accessibility;
+  dataPrice = data.price;
+  dataParticipants = data.participants;
 }
 
 // Function that renders the DOM.  Since my variables are global, I guess
@@ -98,16 +148,14 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
   activityAccessibility.innerHTML = 'accessibility: ' + convertToIcons(
     accessibility,
     accessibilityIcon,
-    activityAccessibility.id
+    // activityAccessibility.id
     );
-  // temporary
-  // console.log('id', activityAccessibility.id);
-  // console.log(activityAccessibility);
 
   var activityPrice = document.getElementById('activityPrice');
   activityPrice.innerHTML = 'price: ' + convertToIcons(
     price,
-    priceIcon
+    priceIcon,
+    activityPrice.id
   );
 
   var activityParticipants = document.getElementById('activityParticipants');
@@ -116,9 +164,12 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
     participantsIcon
   );
 
-  // console.log(dataGifUrl);
+  //experiment setTimeout to make gif load slower so the gif doesn't
+  // change before the flip animation
   var giphyUrl = document.getElementById('giphyUrl');
-  giphyUrl.setAttribute('src', dataGifUrl);
+  setTimeout(function(){
+    giphyUrl.setAttribute('src', dataGifUrl);
+  }, 250);
 }
 
 /*create a function that converts the value of a data response into a string of icons.
@@ -129,9 +180,12 @@ function convertToIcons(dataValue, detailsIcon, detailType) {
   var iconString = '';
   if (dataValue === 0) {
     iconAmt = 0;
-    if (detailType === activityAccessibility.id) {
-      iconString = homeIcon;
-    } else  iconString = freeIcon;
+    // if (detailType === activityAccessibility.id) {
+    //   iconString = homeIcon;
+    // } else  iconString = freeIcon;
+    if (detailType === activityPrice.id) {
+      iconString = freeIcon;
+    } else  iconString = accessibilityIcon;
   } else if (dataValue > 0 && dataValue < 0.25)  {
     iconAmt = 1;
   } else if (dataValue >= 0.25 && dataValue < 0.5)  {
@@ -148,10 +202,7 @@ function convertToIcons(dataValue, detailsIcon, detailType) {
   for(var i = 0; i < iconAmt; i++)  {
     iconString += detailsIcon;
   }
-  // for testing
-  // console.log(iconString);
   return iconString;
-  // return iconString;
 }
 
 // separate icon conversion function for participants because it follows a
@@ -167,35 +218,56 @@ function convertParticipantIcons(dataValue, detailsIcon) {
   return iconString;
 }
 
+// -----------------------------animation functions
+// function to run animations on page load.
+window.onload = function()  {
+  animateBtn();
+  animationLogo();
+  setTimeout(animationLogoSpin, 2300);
+  h1ContentAnimation();
+  setTimeout(h2ContentAnimation, 300);
+}
 
+// add animation class to unwasteBtn
+function animateBtn() {
+  unwasteBtn.classList.add('unwaste-btn-animate');
+}
+// add animation class to logo
+function animationLogo()  {
+  logo.classList.add('logo-animate');
+}
 
-// Previous code that almost worked but dataActivity didnt update fast enough
-// function getActivity(event) {
-//   $.ajax({
-//     url: 'https://www.boredapi.com/api/activity',
-//     method: 'GET',
-//     success: function (data) {
-//       //temporary
-//       console.log('boredapi data response:', data);
-//       getData(data);
-//     },
-//     error: function (data) {
-//       console.error(data);
-//     }
-//   });
+function animationLogoSpin()  {
+  logo.classList.add('logo-animate-spin');
+}
 
-//   $.ajax({
-//     url: 'http://api.giphy.com/v1/gifs/search?q=' + dataActivity + '&api_key=AnFYADkBtWuOmpgnk3muJuAaq10wGSb8&limit=4&rating=pg-13',
-//     method: 'GET',
-//     success: function(giphyData) {
-//       //temporary
-//       console.log('giphy data response:', giphyData);
-//       console.log('value of dataActivity', dataActivity);
-//       console.log('the ajax call url:', this.url);
-//       getGifUrl(giphyData);
-//     },
-//     error: function (giphyData) {
-//       console.error(giphyData);
-//     }
-//   });
-// }
+// add animation class to h1Content
+function h1ContentAnimation() {
+  h1Content.classList.add('heading-content-animation')
+}
+//add animation class to h2Content
+function h2ContentAnimation() {
+  h2Content.classList.add('heading-content-animation')
+}
+
+// handles flip animation for activity info
+function activityInfoAnimation()  {
+  activityInfo.classList.add('rotate-vert-center');
+  activityInfo.addEventListener('animationend', activityInfoListener)
+}
+// remove class and event listener on animation end.
+function activityInfoListener() {
+  activityInfo.classList.remove('rotate-vert-center');
+  activityInfo.removeEventListener('animationend', activityInfoListener);
+}
+
+// handles flip animation for gif
+function gifContainerAnimation() {
+  gifContainer.classList.add('rotate-vert-center');
+  gifContainer.addEventListener('animationend', gifContainerListener);
+}
+// remove class and event listener on animation end.
+function gifContainerListener() {
+  gifContainer.classList.remove('rotate-vert-center');
+  gifContainer.removeEventListener('animationend', gifContainerListener);
+}
