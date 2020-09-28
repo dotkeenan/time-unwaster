@@ -24,14 +24,22 @@ var participantsIcon = '<img src="/assets/images/participants.svg" alt="particip
 var freeIcon = '<img src="/assets/images/free.svg" alt="free icon">';
 var homeIcon = '<img src="/assets/images/home2mini.svg" alt="Work from home icon">';
 
+//Dom Query for Modal Stuff
+var modalOverlay = document.querySelector('.modal-overlay');
+var nerdStats = document.querySelector('.nerd-stats');
+var exitModal = document.querySelector('.exit-modal');
+exitModal.addEventListener('click', function () {
+  modalOverlay.classList.add('d-none');
+})
+
 // add event listener to the unwasteBtn
 unwasteBtn.addEventListener('click', homepageUnwaste);
 
 // function that makes the ajax calls and toggles d-none on appropriate elements
 function homepageUnwaste() {
+  getActivity();
   activityInfoAnimation();
   setTimeout(gifContainerAnimation, 300);
-  getActivity();
   toggleHide();
   toggleShow();
   alterUnwasteBtnAction();
@@ -68,6 +76,7 @@ function getActivity(event) {
     success: dataCollector,
     error: function (data) {
       console.error(data);
+      displayError(data);
       // add a visual indicator for the error on screen
     }
   });
@@ -100,9 +109,16 @@ function dataCollector(data)  {
       },
       error: function (giphyData) {
         console.error(giphyData);
+        displayError(giphyData);
         //add a visual indicator for the error on screen
       }
     });
+}
+
+// show error modal if there is an api response error
+function displayError(test) {
+  modalOverlay.classList.remove('d-none');
+  nerdStats.textContent = console.error(data);
 }
 
 // Function to choose a random gif from a 5 item search query and store the url
@@ -208,8 +224,9 @@ function convertParticipantIcons(dataValue, detailsIcon) {
 // function to run animations on page load.
 window.onload = function()  {
   animateBtn();
-  animationLogo()
-  h1ContentAnimation()
+  animationLogo();
+  setTimeout(animationLogoSpin, 2300);
+  h1ContentAnimation();
   setTimeout(h2ContentAnimation, 300);
 }
 
@@ -221,6 +238,11 @@ function animateBtn() {
 function animationLogo()  {
   logo.classList.add('logo-animate');
 }
+
+function animationLogoSpin()  {
+  logo.classList.add('logo-animate-spin');
+}
+
 // add animation class to h1Content
 function h1ContentAnimation() {
   h1Content.classList.add('heading-content-animation')
@@ -251,25 +273,3 @@ function gifContainerListener() {
   gifContainer.classList.remove('rotate-vert-center');
   gifContainer.removeEventListener('animationend', gifContainerListener);
 }
-
-
-/* Code for flipping the unwasteBtn.  Just for testing. */
-// Working version of below but without jQuery.  Seems to be fine. Prevented
-// accumulating more event listeners on the element with each click.
-// function btnFlip(){
-//   unwasteBtn.classList.add('rotate-vert-center');
-//   unwasteBtn.addEventListener('animationend', btnFlipListener);
-// }
-// function btnFlipListener()  {
-//   unwasteBtn.classList.remove('rotate-vert-center');
-//   unwasteBtn.removeEventListener('animationend', btnFlipListener);
-// }
-
-// Working way to make animation happen every click, but uses jQuery.
-// var animationEnd = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
-// $(unwasteBtn).click(function()  {
-//   $(this).addClass('rotate-vert-center');
-//   $(this).on(animationEnd, function(event) {
-//     $(this).removeClass('rotate-vert-center');
-//   });
-// })
