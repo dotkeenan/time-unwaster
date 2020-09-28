@@ -26,7 +26,6 @@ var homeIcon = '<img src="/assets/images/home2mini.svg" alt="Work from home icon
 
 //Dom Query for Modal Stuff
 var modalOverlay = document.querySelector('.modal-overlay');
-var nerdStats = document.querySelector('.nerd-stats');
 var exitModal = document.querySelector('.exit-modal');
 exitModal.addEventListener('click', function () {
   modalOverlay.classList.add('d-none');
@@ -118,7 +117,6 @@ function dataCollector(data)  {
 // show error modal if there is an api response error
 function displayError(test) {
   modalOverlay.classList.remove('d-none');
-  nerdStats.textContent = console.error(data);
 }
 
 // Function to choose a random gif from a 5 item search query and store the url

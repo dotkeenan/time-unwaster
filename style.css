@@ -410,10 +410,6 @@ svg{
     border-bottom: 1px dashed black; /* This creates the border. Replace black with whatever color you want. */
 }
 
-.details  {
-  /* line-height: 1rem; */
-}
-
 .gif-container  {
   width: 100%;
   /* flex-basis: 100%; */
@@ -474,6 +470,13 @@ svg{
   /* flex-basis: 100%; */
 }
 
+.exit-modal {
+  width: 50px;
+  height: 30px;
+  background-color: rgba(166, 233, 202, .8);
+  border: none;
+  border-radius: 50px;
+}
 
 /* ------------------------------------media queries */
 /* // Extra small devices (portrait phones, less than 576px) */
