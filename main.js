@@ -165,6 +165,9 @@ function convertToIcons(dataValue, detailsIcon, detailType) {
   var iconString = '';
   if (dataValue === 0) {
     iconAmt = 0;
+    // if (detailType === activityAccessibility.id) {
+    //   iconString = homeIcon;
+    // } else  iconString = freeIcon;
     if (detailType === activityAccessibility.id) {
       iconString = homeIcon;
     } else  iconString = freeIcon;
@@ -228,45 +231,44 @@ function h2ContentAnimation() {
 
 // handles flip animation for activity info
 function activityInfoAnimation()  {
-  activityInfo.classList.add('rotate-hor-center');
+  activityInfo.classList.add('rotate-vert-center');
   activityInfo.addEventListener('animationend', activityInfoListener)
 }
 // remove class and event listener on animation end.
 function activityInfoListener() {
-  activityInfo.classList.remove('rotate-hor-center');
+  activityInfo.classList.remove('rotate-vert-center');
   activityInfo.removeEventListener('animationend', activityInfoListener);
 }
 
 // handles flip animation for gif
 function gifContainerAnimation() {
-  gifContainer.classList.add('rotate-hor-center');
+  gifContainer.classList.add('rotate-vert-center');
   gifContainer.addEventListener('animationend', gifContainerListener);
 }
 // remove class and event listener on animation end.
 function gifContainerListener() {
-  gifContainer.classList.remove('rotate-hor-center');
+  gifContainer.classList.remove('rotate-vert-center');
   gifContainer.removeEventListener('animationend', gifContainerListener);
 }
-
 
 
 /* Code for flipping the unwasteBtn.  Just for testing. */
 // Working version of below but without jQuery.  Seems to be fine. Prevented
 // accumulating more event listeners on the element with each click.
 // function btnFlip(){
-//   unwasteBtn.classList.add('rotate-hor-center');
+//   unwasteBtn.classList.add('rotate-vert-center');
 //   unwasteBtn.addEventListener('animationend', btnFlipListener);
 // }
 // function btnFlipListener()  {
-//   unwasteBtn.classList.remove('rotate-hor-center');
+//   unwasteBtn.classList.remove('rotate-vert-center');
 //   unwasteBtn.removeEventListener('animationend', btnFlipListener);
 // }
 
 // Working way to make animation happen every click, but uses jQuery.
 // var animationEnd = 'webkitAnimationEnd oanimationend msAnimationEnd animationend';
 // $(unwasteBtn).click(function()  {
-//   $(this).addClass('rotate-hor-center');
+//   $(this).addClass('rotate-vert-center');
 //   $(this).on(animationEnd, function(event) {
-//     $(this).removeClass('rotate-hor-center');
+//     $(this).removeClass('rotate-vert-center');
 //   });
 // })

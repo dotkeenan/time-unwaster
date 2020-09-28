@@ -1,3 +1,107 @@
+/* Boostrap classes */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.h1,
+h1 {
+    font-size: 2.5rem;
+}
+.h2,
+h2 {
+    font-size: 2rem;
+}
+.h3,
+h3 {
+    font-size: 1.75rem;
+}
+.h4,
+h4 {
+    font-size: 1.5rem;
+}
+.h5,
+h5 {
+    font-size: 1.25rem;
+}
+.h6,
+h6 {
+    font-size: 1rem;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* margin-right: -15px;
+    margin-left: -15px; */
+}
+
+.container  {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    /* margin-right: auto;
+    margin-left: auto; */
+}
+
+.d-none {
+    display: none !important;
+}
+
+.justify-content-center {
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+}
+
+.align-self-end {
+    -ms-flex-item-align: end !important;
+    align-self: flex-end !important;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+svg{
+    vertical-align: middle;
+    border-style: none;
+}
+
+/* -----------------end of bootstrap classes */
 
 * {
   box-sizing: border-box;
@@ -6,7 +110,7 @@
 
 body  {
   /* for testing purposes */
-  border: 2px solid black;
+  border: 2px solid red;
   max-width: 375px;
   margin: 0 auto;
   font-family: 'DM Sans', sans-serif;
@@ -25,6 +129,7 @@ body  {
 .header-class  {
   /* Not sure why my header goes down so far when there is no content there */
   /* height: 33%; */
+  width: 100%;
   margin-top: 55px;
 }
 
@@ -81,6 +186,7 @@ body  {
 
 .main-button-div  {
   margin-bottom: 40px;
+  width: 100%;
 }
 
 .unwaste-btn  {
@@ -94,7 +200,7 @@ body  {
   border-radius: 100px;
   /* new animation stuff */
   /* change the next line.  Scale is getting affected by the transition as well */
-  transform: translate(-2750px) scale(1.0);
+  transform: translate(-2750px);
   /* transition: transform 800ms cubic-bezier(0, 2.2, 0.68, 0.86); */
   transition: transform 800ms cubic-bezier(0.85, 0.9, 0, 2.3);
 }
@@ -146,33 +252,69 @@ body  {
   }
 }
 
-.rotate-hor-center {
-	-webkit-animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
-	animation: rotate-hor-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+/* .scale-up-center {
+	-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  opacity: 0;
 }
 
-@-webkit-keyframes rotate-hor-center {
+@-webkit-keyframes scale-up-center {
   0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
+    opacity:0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
   }
   100% {
-    -webkit-transform: rotateX(-360deg);
-    transform: rotateX(-360deg);
+    opacity:1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
-@keyframes rotate-hor-center {
+@keyframes scale-up-center {
   0% {
-    -webkit-transform: rotateX(0);
-    transform: rotateX(0);
+    opacity: 0;
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
   }
   100% {
-    -webkit-transform: rotateX(-360deg);
-    transform: rotateX(-360deg);
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+} */
+
+.rotate-vert-center {
+	-webkit-animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+
+@-webkit-keyframes rotate-vert-center {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
+  }
+}
+@keyframes rotate-vert-center {
+  0% {
+    opacity: 0;
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: rotateY(360deg);
+            transform: rotateY(360deg);
   }
 }
 
 .logo {
+  width: 30%;
   transform: scale(1);
 }
 
@@ -220,6 +362,7 @@ body  {
 
 .activity-info  {
   width: 100%;
+  /* flex-basis: 100%; */
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
   border-radius: 18px;
@@ -227,9 +370,13 @@ body  {
 }
 
 .h1-activity-content  {
+  height: auto;
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: 10px;
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
   /* border-bottom: 2px solid black; */
 }
 
@@ -243,8 +390,13 @@ body  {
     border-bottom: 1px dashed black; /* This creates the border. Replace black with whatever color you want. */
 }
 
+.details  {
+  /* line-height: 1rem; */
+}
+
 .gif-container  {
   width: 100%;
+  /* flex-basis: 100%; */
   max-height: 250px;
   /* experiment for using background-image instead of img tag. */
   /* height: 100vh; */
@@ -275,20 +427,138 @@ body  {
 
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
+  body  {
+    max-width: 767px;
+  }
+  .h1-content {
+    font-size: 3.5rem;
+  }
+  .h2-content {
+    font-size: 1.5rem;
+  }
+  .content  {
+  width: 100%;
+  height: 100%;
+  background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash.jpg) center / cover no-repeat ;
+  }
 
+  .activity-page-div{
+    width: 65%;
+  }
+
+  .logo {
+    width: 20%;
+  }
 }
+
+@media only screen and (max-width: 667px) and (orientation: landscape) {
+  body  {
+    max-height: 100vh;
+    min-width: 667px;
+  }
+  .content  {
+    width: 100%;
+    height: 100%;
+    background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash.jpg) center / cover repeat ;
+  }
+  .header-class {
+    margin-top: 5%;
+  }
+  .h1-content, .h2-content {
+    margin: 5px auto;
+  }
+  .h1-content {
+    font-size: 2.5rem;
+  }
+  .h2-content {
+    font-size: 1.3rem;
+  }
+  .logo {
+    width: 15%;
+  }
+
+  .activity-page-div  {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+  .activity-info  {
+    flex-basis: 50%;
+    margin-left: 0;
+    height: auto;
+  }
+  .gif-container  {
+    margin: 0;
+    max-width: 40%;
+  }
+  .main-button-div  {
+    margin:10px;
+  }
+  .content-row  {
+    padding: 0;
+  }
+}
+
+
 
 /* // Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-
+  body  {
+    max-width: 991px;
+    height: 1024px
+  }
+  .h1-content {
+    font-size: 3.5rem;
+  }
+  .h2-content {
+    font-size: 1.5rem;
+  }
+  .content  {
+  width: 100%;
+  height: 100%;
+  background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash.jpg) center / cover no-repeat ;
+  }
+  .activity-page-div{
+    width: 65%;
+  }
+  .logo {
+    width: 20%;
+  }
+  .content-row{
+    align-content: center;
+  }
 }
 
 /* // Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
+  body  {
+    max-width: 1200px;
+  }
+  .h1-content {
+    font-size: 3.5rem;
+  }
+  .h2-content {
+    font-size: 1.5rem;
+  }
+  .content  {
+  width: 100%;
+  height: 100%;
+  background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash.jpg) center / cover no-repeat ;
+  }
+  .activity-page-div{
+    width: 65%;
+  }
+  .logo {
+    width: 20%;
+  }
 
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
+/* .content  {
+  height: 100%;
+  background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash.jpg) center / cover no-repeat ;
+  } */
 }
