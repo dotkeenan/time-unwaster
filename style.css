@@ -514,8 +514,8 @@ svg{
   .logo {
     width: 20%;
   }
-  .main-button-div{
-    /* width: auto; */
+  .button-container {
+    width: 100%;
   }
 }
 
