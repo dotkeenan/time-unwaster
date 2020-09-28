@@ -5,7 +5,6 @@
 }
 
 body {
-    margin: 0 auto;
     max-width: 375px;
     height: 667px;
     font-family: 'DM Sans', sans-serif;
@@ -15,16 +14,6 @@ body {
     color: #212529;
     text-align: left;
     background-color: #fff;
-}
-
-.overlay  {
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  /* z-index: -2000; */
-  background-color: rgba(0, 0, 0, 0.50);
-  height: 100%;
-  width: 100%;
 }
 
 p {
@@ -44,27 +33,26 @@ h6 {
     line-height: 1.2;
 }
 
-.h1,
 h1 {
     font-size: 2.5rem;
 }
-.h2,
+
 h2 {
     font-size: 2rem;
 }
-.h3,
+
 h3 {
     font-size: 1.75rem;
 }
-.h4,
+
 h4 {
     font-size: 1.5rem;
 }
-.h5,
+
 h5 {
     font-size: 1.25rem;
 }
-.h6,
+
 h6 {
     font-size: 1rem;
 }
@@ -82,16 +70,12 @@ h6 {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    /* margin-right: -15px;
-    margin-left: -15px; */
 }
 
 .container  {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
-    /* margin-right: auto;
-    margin-left: auto; */
 }
 
 .justify-content-center {
@@ -113,12 +97,10 @@ svg{
     vertical-align: middle;
     border-style: none;
 }
-
 /* -----------------end of bootstrap classes */
 
 .content  {
   height: 100%;
-  /* min-height: 667px; */
   background: url(assets/images/pUAM5hPaCRI-dark.png) center / cover no-repeat ;
 }
 
@@ -128,8 +110,6 @@ svg{
 }
 
 .header-class  {
-  /* Not sure why my header goes down so far when there is no content there */
-  /* height: 33%; */
   width: 100%;
   margin-top: 55px;
 }
@@ -191,7 +171,6 @@ svg{
 }
 
 .main-button-div  {
-  /* margin-bottom: 40px; */
   transition: transform .1s linear;
   transform: scale(1);
   width: 135px;
@@ -210,30 +189,22 @@ svg{
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
   border: none;
   border-radius: 100px;
-  /* new animation stuff */
-  /* change the next line.  Scale is getting affected by the transition as well */
   transform: translate(-2750px);
-  /* transition: transform 800ms cubic-bezier(0, 2.2, 0.68, 0.86); */
   transition: transform 800ms cubic-bezier(0.85, 0.9, 0, 2.3);
 }
 
-/* this is affected by the timing function as well */
+/* --------------- animation styling ---------------*/
 .unwaste-btn:hover  {
   transform: scale(1.5);
 }
 
-
-
-/* new animation stuff */
 .unwaste-btn-animate  {
-  /* transform: translate(0px); */
   animation-name: bounce-in;
   animation-duration: 800ms;
   animation-timing-function: ease-in;
   animation-delay: 1400ms;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  /* animation-play-state: running; */
 }
 
 @keyframes bounce-in  {
@@ -265,37 +236,6 @@ svg{
     transform: translate(0px);
   }
 }
-
-/* .scale-up-center {
-	-webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  opacity: 0;
-}
-
-@-webkit-keyframes scale-up-center {
-  0% {
-    opacity:0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-  }
-  100% {
-    opacity:1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-}
-@keyframes scale-up-center {
-  0% {
-    opacity: 0;
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
-} */
 
 .rotate-vert-center {
 	-webkit-animation: rotate-vert-center 0.5s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
@@ -363,7 +303,6 @@ svg{
   animation-name: spin;
   animation-duration:5000ms;
   animation-timing-function: linear;
-  /* animation-delay: 800ms; */
   animation-iteration-count: infinite;
 }
 
@@ -385,16 +324,6 @@ svg{
   }
 }
 
-/* .acitivty-info-animate  {
-  animation-name: spin;
-  animation-duration: 3000ms;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-play-state: running;
-} */
-
-
-
 /* ----------------------------------------End of home page CSS */
 .activity-page-div  {
   padding: 3% 7%;
@@ -402,7 +331,6 @@ svg{
 
 .activity-info  {
   width: 100%;
-  /* flex-basis: 100%; */
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
   border-radius: 18px;
@@ -417,10 +345,9 @@ svg{
   width: 100%;
   margin-left: 15px;
   margin-right: 15px;
-  /* border-bottom: 2px solid black; */
 }
 
-/* super secret weird partial border */
+
 .h1-activity-content:after  {
     content: ""; /* This is necessary for the pseudo element to work. */
     display: block; /* This will put the pseudo element on its own line. */
@@ -432,21 +359,8 @@ svg{
 
 .gif-container  {
   width: 100%;
-  /* flex-basis: 100%; */
   max-height: 250px;
-  /* experiment for using background-image instead of img tag. */
-  /* height: 100vh; */
 }
-
-/* experiment for using background-image instead of img tag. */
-/* .gif-div  {
-  width: 100%;
-  height: 100%;
-  border: 2px solid red;
-  background-image: url(https://media2.giphy.com/media/UVFztIAHhQGsyn1eTK/giphy.gif?cid=ecf05e478d88ab313843fedafbdbfb9a1f7abb2e37572d2b&rid=giphy.gif);
-  background-size: contain;
-  background-repeat: no-repeat;
-} */
 
 .image {
   border: 3px solid white;
@@ -457,6 +371,7 @@ svg{
   border-radius: 18px;
 }
 
+/* ---------modal overlay styling ----------*/
 .modal-overlay  {
   z-index: 1000;
   position: fixed;
@@ -477,17 +392,14 @@ svg{
   height: 90%;
   top: 5%;
   left: 5%;
-  /* transform: translate(-50% -50%); */
   text-align: center;
 }
 
 .modal-content h2 {
   font-size: 3rem;
-  /* flex-basis: 100%; */
 }
 .modal-content p {
   font-size: 1rem;
-  /* flex-basis: 100%; */
 }
 
 .exit-modal {
@@ -498,10 +410,9 @@ svg{
   border-radius: 50px;
 }
 
-/* ------------------------------------media queries */
+/* --------------- media queries --------------*/
 /* // Extra small devices (portrait phones, less than 576px) */
 /* // No media query since this is the default in Bootstrap */
-
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) {
   body  {
@@ -518,7 +429,6 @@ svg{
   height: 100%;
   background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash-dark.png) center / cover no-repeat ;
   }
-
   .activity-page-div{
     width: 65%;
   }
@@ -552,7 +462,6 @@ svg{
   .logo {
     width: 15%;
   }
-
   .activity-page-div  {
     width: 100%;
     padding-left: 0;
@@ -629,7 +538,6 @@ svg{
   .gif-container  {
     max-height: 325px;
   }
-
   .button-container  {
     position: absolute;
     bottom: 15px;
@@ -654,7 +562,6 @@ svg{
   .h2-content {
     font-size: 1.5rem;
   }
-
   .logo {
     width: 70%;
   }

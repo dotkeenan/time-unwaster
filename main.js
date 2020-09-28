@@ -8,6 +8,7 @@ var dataAccessibility = null;
 var dataPrice = null;
 var dataParticipants = null;
 var dataGifUrl = null;
+
 // dom queries for animation related elements
 var gifContainer = document.querySelector('.gif-container');
 var activityInfo = document.querySelector('.activity-info');
@@ -76,14 +77,12 @@ function getActivity(event) {
     error: function (data) {
       console.error(data);
       displayError(data);
-      // add a visual indicator for the error on screen
     }
   });
 }
 
 // created a named function to clean up the success of getActivity.
 function dataCollector(data)  {
-    //temporary
     console.log('boredapi data response:', data);
     getData(data);
 
@@ -98,10 +97,7 @@ function dataCollector(data)  {
         lang: "en"
       },
       success: function (giphyData) {
-        //temporary
         console.log('giphy data response:', giphyData);
-        // console.log('value of dataActivity', dataActivity);
-        // console.log('the ajax call url:', this.url);
         getGifUrl(giphyData);
         renderDOM(dataActivity, dataType, dataAccessibility, dataPrice, dataParticipants, dataGifUrl);
 
@@ -109,7 +105,6 @@ function dataCollector(data)  {
       error: function (giphyData) {
         console.error(giphyData);
         displayError(giphyData);
-        //add a visual indicator for the error on screen
       }
     });
 }
@@ -134,8 +129,7 @@ function getData(data) {
   dataParticipants = data.participants;
 }
 
-// Function that renders the DOM.  Since my variables are global, I guess
-// I don't need these parameters anymore...
+// Function that renders the DOM
 function renderDOM(activity, type, accessibility, price, participants, dataGifUrl) {
 
   var activityName = document.getElementById('activityName')
@@ -148,7 +142,6 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
   activityAccessibility.innerHTML = 'accessibility: ' + convertToIcons(
     accessibility,
     accessibilityIcon,
-    // activityAccessibility.id
     );
 
   var activityPrice = document.getElementById('activityPrice');
@@ -164,7 +157,7 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
     participantsIcon
   );
 
-  //experiment setTimeout to make gif load slower so the gif doesn't
+  // setTimeout to make gif load slower so the gif doesn't
   // change before the flip animation
   var giphyUrl = document.getElementById('giphyUrl');
   setTimeout(function(){
@@ -180,9 +173,6 @@ function convertToIcons(dataValue, detailsIcon, detailType) {
   var iconString = '';
   if (dataValue === 0) {
     iconAmt = 0;
-    // if (detailType === activityAccessibility.id) {
-    //   iconString = homeIcon;
-    // } else  iconString = freeIcon;
     if (detailType === activityPrice.id) {
       iconString = freeIcon;
     } else  iconString = accessibilityIcon;
@@ -213,12 +203,10 @@ function convertParticipantIcons(dataValue, detailsIcon) {
   for (var i = 0; i < dataValue; i++) {
     iconString += detailsIcon;
   }
-  // for testing
-  // console.log(iconString);
   return iconString;
 }
 
-// -----------------------------animation functions
+// -----------------------------animation functions------------------------ //
 // function to run animations on page load.
 window.onload = function()  {
   animateBtn();
