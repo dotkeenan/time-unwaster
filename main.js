@@ -169,7 +169,7 @@ function renderDOM(activity, type, accessibility, price, participants, dataGifUr
   var giphyUrl = document.getElementById('giphyUrl');
   setTimeout(function(){
     giphyUrl.setAttribute('src', dataGifUrl);
-  }, 250);
+  }, 200);
 }
 
 /*create a function that converts the value of a data response into a string of icons.
