@@ -181,6 +181,12 @@ svg{
 .main-button-div  {
   margin-bottom: 40px;
   width: 100%;
+  transition: transform .3s ease-in-out;
+  transform: scale(1);
+}
+
+.main-button-div:hover  {
+  transform: scale(1.2);
 }
 
 .unwaste-btn  {
@@ -203,6 +209,8 @@ svg{
 .unwaste-btn:hover  {
   transform: scale(1.5);
 }
+
+
 
 /* new animation stuff */
 .unwaste-btn-animate  {
@@ -609,13 +617,37 @@ svg{
   .logo {
     width: 20%;
   }
-
 }
 
 /* // Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-/* .content  {
+  body  {
+    max-width: 1920px;
+  }
+  .h1-content {
+    font-size: 3.5rem;
+  }
+  .h2-content {
+    font-size: 1.5rem;
+  }
+  .h1-activity-content  {
+    font-size: 2.5rem;
+  }
+  .activity-info  {
+    font-size: 1.5rem;
+  }
+  .content  {
+  width: 100%;
   height: 100%;
   background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash.jpg) center / cover no-repeat ;
-  } */
+  }
+  .activity-page-div{
+    width: 40%;
+  }
+  .logo {
+    width: 10%;
+  }
+  .content-row{
+    align-content: flex-start;
+  }
 }
