@@ -354,7 +354,6 @@ svg{
   margin-right: 15px;
 }
 
-
 .h1-activity-content:after  {
     content: ""; /* This is necessary for the pseudo element to work. */
     display: block; /* This will put the pseudo element on its own line. */
@@ -405,6 +404,7 @@ svg{
 .modal-content h2 {
   font-size: 3rem;
 }
+
 .modal-content p {
   font-size: 1rem;
 }
