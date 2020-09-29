@@ -417,6 +417,10 @@ svg{
   border-radius: 50px;
 }
 
+.hidden {
+  display: none;
+}
+
 /* --------------- media queries --------------*/
 /* // Extra small devices (portrait phones, less than 576px) */
 /* // No media query since this is the default in Bootstrap */
@@ -443,6 +447,7 @@ svg{
     width: 20%;
   }
 }
+
 
 @media only screen and (max-width: 667px) and (orientation: landscape) {
   body  {
@@ -490,10 +495,6 @@ svg{
   .content-row  {
     padding: 0;
   }
-}
-
-.hidden {
-  display: none;
 }
 
 /* // Medium devices (tablets, 768px and up) */
