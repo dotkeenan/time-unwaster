@@ -5,8 +5,8 @@
 }
 
 body {
-    max-width: 375px;
-    height: 667px;
+    max-width: 100vh;
+    height: 100vh;
     font-family: 'DM Sans', sans-serif;
     font-size: 1rem;
     font-weight: 400;
@@ -100,8 +100,9 @@ svg{
 /* -----------------end of bootstrap classes */
 
 .content  {
+  width: 100%;
   height: 100%;
-  background: url(assets/images/pUAM5hPaCRI-dark.png) center / cover no-repeat ;
+  background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash-dark.png) center / cover no-repeat ;
 }
 
 .content-row {
@@ -270,7 +271,7 @@ svg{
 }
 
 .logo {
-  width: 30%;
+  width: 20%;
   transform: scale(1);
 }
 
