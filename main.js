@@ -90,7 +90,7 @@ function dataCollector(data)  {
       url: 'https://api.giphy.com/v1/gifs/search',
       method: 'GET',
       data: {
-        q: dataActivity,
+        q: dataType,
         api_key: "AnFYADkBtWuOmpgnk3muJuAaq10wGSb8",
         rating: "pg-13",
         limit: "4",
