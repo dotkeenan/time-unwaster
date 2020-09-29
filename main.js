@@ -90,10 +90,10 @@ function dataCollector(data)  {
       url: 'https://api.giphy.com/v1/gifs/search',
       method: 'GET',
       data: {
-        q: dataType,
+        q: dataType + ' ' + dataActivity,
         api_key: "AnFYADkBtWuOmpgnk3muJuAaq10wGSb8",
         rating: "pg-13",
-        limit: "4",
+        limit: "8",
         lang: "en"
       },
       success: function (giphyData) {
@@ -116,7 +116,7 @@ function displayError(test) {
 
 // Function to choose a random gif from a 5 item search query and store the url
 function getGifUrl(giphyData)  {
-  var randomNumber = Math.floor(Math.random() * 4);
+  var randomNumber = Math.floor(Math.random() * 8);
   dataGifUrl = giphyData.data[randomNumber].images.original.url;
 }
 
