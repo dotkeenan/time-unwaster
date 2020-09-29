@@ -7,6 +7,7 @@ Responsive, Mobile-First Design
 - HTML5
 - CSS3
 - Javascript
+- Ajax
 - jQuery
 - Iconify
 - Figma
