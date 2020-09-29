@@ -18,8 +18,8 @@ var h2Content = document.querySelector('.h2-content');
 
 // Icon paths/code
 var accessibilityIcon = '<img src="assets/images/accessibility.svg" alt="accessibility icon">';
-// This SVG is bugged or something.  It works on line 16, but not on 15 when I turn it into a svg.
-// var priceIcon = '<img src="/assets/images/price.svg" alt="price icon">';
+// This SVG is bugged or something.  Using the raw SVG code works, but not the filepath to the local svg
+// var priceIcon = '<img src="assets/images/price.svg" alt="price icon">';
 var priceIcon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns: xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="font-size: 24px; transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24" class="iconify" data-inline="false" data-icon="mdi:cash-usd"><path d="M20 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16c1.11 0 2-.89 2-2V6a2 2 0 0 0-2-2m-5 6h-4v1h3c.55 0 1 .45 1 1v3c0 .55-.45 1-1 1h-1v1h-2v-1H9v-2h4v-1h-3c-.55 0-1-.45-1-1V9c0-.55.45-1 1-1h1V7h2v1h2v2z" fill="currentColor"></path></svg>';
 var participantsIcon = '<img src="assets/images/participants.svg" alt="participants icon">';
 var freeIcon = '<img src="assets/images/free.svg" alt="free icon">';
