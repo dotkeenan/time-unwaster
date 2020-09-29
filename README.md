@@ -44,10 +44,4 @@ See the application live: https://dotkeenan.github.io/api-hackathon/
     https://github.com/dotkeenan/api-hackathon.git
     cd api-hackathon
     ```
-
-3.  Install all dependencies with NPM.
-    ```shell
-    npm install
-    ```
-
-4.  Start the project.  Once started, you can view the application by opening the index.html in your browser.
+3.  Start the project.  Once started, you can view the application by opening the index.html in your browser.
