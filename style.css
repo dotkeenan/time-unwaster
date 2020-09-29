@@ -448,7 +448,6 @@ svg{
   }
 }
 
-
 @media only screen and (max-width: 667px) and (orientation: landscape) {
   body  {
     max-height: 100vh;
