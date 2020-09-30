@@ -37,7 +37,7 @@ See the application live: https://dotkeenan.github.io/api-hackathon/
 
 ### Getting Started
 
-1.  This application requires the use of the Bored API and the Giphy Api.
+1.  This application requires the use of the Bored API and the Giphy API.
     You must have API keys for both.
 
 2.  Clone the repository.
