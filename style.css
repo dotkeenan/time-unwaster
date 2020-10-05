@@ -423,11 +423,62 @@ svg{
 
 /* --------------- media queries --------------*/
 /* // Extra small devices (portrait phones, less than 576px) */
-/* // No media query since this is the default in Bootstrap */
+@media (max-height: 349px) {
+  body  {
+    max-height: 100vh;
+    min-width: 100%;
+  }
+  .header-class {
+    margin-top: 5%;
+  }
+  .h1-content, .h2-content {
+    margin: 5px auto;
+  }
+  .h1-content {
+    font-size: 2rem;
+  }
+  .h2-content {
+    font-size: 1rem;
+  }
+  .logo {
+    width: 10%;
+  }
+  .h1-activity-content  {
+    font-size: 1rem;
+  }
+  .activity-page-div  {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    height: 75vh;
+  }
+  .activity-info  {
+    flex-basis: 50%;
+    margin-left: 0;
+    height: auto;
+  }
+  .details  {
+    font-size: .9rem;
+  }
+  .gif-container  {
+    margin: 0;
+    max-width: 40%;
+    height: 70vh;
+  }
+  .button-container {
+    margin-bottom: 5px;
+  }
+  .content-row  {
+    padding: 0;
+  }
+}
+
 /* // Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) {
+@media (min-width: 576px) and (min-height: 350px) {
   body  {
     max-width: 767px;
+    height: 100%;
   }
   .h1-content {
     font-size: 3.5rem;
@@ -448,21 +499,10 @@ svg{
   }
 }
 
-@media only screen and (max-width: 667px) and (orientation: landscape) {
+@media only screen and (min-height: 350px) and (max-height: 415px) and (orientation: landscape) {
   body  {
     max-height: 100vh;
-    min-width: 667px;
-  }
-  .content  {
-    width: 100%;
-    height: 100%;
-    background: url(assets/images/hector-martinez-EG49vTtKdvI-unsplash-dark.png) center / cover repeat ;
-  }
-  .header-class {
-    margin-top: 5%;
-  }
-  .h1-content, .h2-content {
-    margin: 5px auto;
+    min-width: 100%;
   }
   .h1-content {
     font-size: 2.5rem;
@@ -471,7 +511,7 @@ svg{
     font-size: 1.3rem;
   }
   .logo {
-    width: 15%;
+    width: 13%;
   }
   .activity-page-div  {
     width: 100%;
@@ -497,7 +537,7 @@ svg{
 }
 
 /* // Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (min-height: 415px) {
   body  {
     max-width: 991px;
     height: 100vh;
