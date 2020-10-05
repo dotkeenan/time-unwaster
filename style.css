@@ -421,6 +421,8 @@ svg{
   display: none;
 }
 
+/* --------------- media queries --------------*/
+/* // Extra small devices (portrait phones, less than 576px) */
 @media (max-height: 349px) {
   body  {
     max-height: 100vh;
@@ -472,9 +474,6 @@ svg{
   }
 }
 
-/* --------------- media queries --------------*/
-/* // Extra small devices (portrait phones, less than 576px) */
-/* // No media query since this is the default in Bootstrap */
 /* // Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (min-height: 350px) {
   body  {
