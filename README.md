@@ -18,7 +18,7 @@ Responsive, Mobile-First Design
 
 ## Live Demo
 
-See the application live: https://dotkeenan.github.io/api-hackathon/
+See the application live: https://dotkeenan.github.io/time-unwaster/
 
 ## Features
 
