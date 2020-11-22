@@ -48,12 +48,19 @@ function homepageUnwaste() {
 // Experimental for animations
 function alterUnwasteBtnAction() {
   unwasteBtn.removeEventListener('click', homepageUnwaste);
-  unwasteBtn.addEventListener('click', function() {
-    getActivity();
-    activityInfoAnimation();
-    setTimeout(gifContainerAnimation, 300);
-  })
+  unwasteBtn.addEventListener('click', ajaxAndAnimation)
 }
+
+function ajaxAndAnimation() {
+  getActivity();
+  activityInfoAnimation();
+  setTimeout(gifContainerAnimation, 300);
+  unwasteBtn.removeEventListener('click', ajaxAndAnimation)
+}
+
+$(document).ajaxStop(function() {
+  unwasteBtn.addEventListener('click', ajaxAndAnimation)
+})
 
 // function to show the activity page
 function toggleShow() {
